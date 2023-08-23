@@ -1,0 +1,90 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<!--begin::Head-->
+<head>
+    <title>Jet HTML Pro - Bootstrap 5 HTML Multipurpose Admin Dashboard Theme by Keenthemes</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="Jet admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." />
+    <meta name="keywords" content="Jet theme, bootstrap, bootstrap 5, admin themes, free admin themes, bootstrap admin, bootstrap dashboard" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Jet HTML Pro - Bootstrap 5 HTML Multipurpose Admin Dashboard Theme" />
+    <meta property="og:url" content="https://keenthemes.com/products/jet-html-pro" />
+    <meta property="og:site_name" content="Keenthemes | Jet HTML Pro" />
+    <link rel="canonical" href="https://preview.keenthemes.com/jet-html-pro" />
+    <link rel="shortcut icon" href="/jet-html-pro/assets/media/logos/favicon.ico" />
+
+    <!--begin::Fonts(mandatory for all pages)-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />        <!--end::Fonts-->
+    <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
+    <link href="/jet-html-pro/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="/jet-html-pro/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <!--end::Global Stylesheets Bundle-->
+    <!--Begin::Google Tag Manager -->
+    <script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5FS8GGP');</script>
+    <!--End::Google Tag Manager -->
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+<body id="kt_body" class="auth-bg">
+    <!--begin::Theme mode setup on page load-->
+    <script>
+	var defaultThemeMode = "light";
+	var themeMode;
+
+	if ( document.documentElement ) {
+		if ( document.documentElement.hasAttribute("data-bs-theme-mode")) {
+			themeMode = document.documentElement.getAttribute("data-bs-theme-mode");
+		} else {
+			if ( localStorage.getItem("data-bs-theme") !== null ) {
+				themeMode = localStorage.getItem("data-bs-theme");
+			} else {
+				themeMode = defaultThemeMode;
+			}
+		}
+
+		if (themeMode === "system") {
+			themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+		}
+
+		document.documentElement.setAttribute("data-bs-theme", themeMode);
+	}
+    </script>
+    <!--end::Theme mode setup on page load-->
+    <!--Begin::Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FS8GGP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!--End::Google Tag Manager (noscript) -->
+    <!--begin::Main-->
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Authentication - 404 Page-->
+        <div class="d-flex flex-column flex-center flex-column-fluid p-10">
+            <!--begin::Illustration-->
+            <img src="/jet-html-pro/assets/media/illustrations/sigma-1/18.png" alt="" class="mw-100 mb-10 h-lg-450px" />
+            <!--end::Illustration-->
+            <!--begin::Message-->
+            <!--end::Link-->
+        </div>
+        <!--end::Authentication - 404 Page-->
+
+    </div>
+    <!--end::Main-->
+    <!--begin::Javascript-->
+    <script>
+            var hostUrl = "/jet-html-pro/assets/";        </script>
+
+    <!--begin::Global Javascript Bundle(mandatory for all pages)-->
+    <script src="/jet-html-pro/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="/jet-html-pro/assets/js/scripts.bundle.js"></script>
+    <!--end::Global Javascript Bundle-->
+    <!--end::Javascript-->
+
+</body>
+<!--end::Body-->
+</html>
