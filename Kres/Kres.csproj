@@ -128,6 +128,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataLayer\DataAccess.cs" />
+    <Compile Include="Models\DataLayer\DataAccessLayer.cs" />
+    <Compile Include="Models\DataLayer\DatabaseContext.cs" />
+    <Compile Include="Models\EntityLayer\Teacher.cs" />
+    <Compile Include="Models\Helper\BaseController.cs" />
+    <Compile Include="Models\Helper\UrlHelperExtensions.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.6.1.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2015,7 +2021,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Models\" />
+    <Folder Include="Models\Log\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
