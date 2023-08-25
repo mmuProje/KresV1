@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Kres.Areas.Admin.Controllers
 {
-    public class LoginController : Controller
+    public class AdminLoginController : Controller
     {
         // GET: Admin/Login
         public ActionResult Index()
