@@ -39,16 +39,16 @@ namespace Kres.Models.DataLayer
         }
         public static DataTable ExecuteReader(CommandType commandType, string commandText)
         {
-            //try
-            //{
-            //    return Eryaz.Utility.MsSqlHelper.ExecuteDataTable(GlobalSettings.ConnectionString, commandType, commandText);
-            //}
-            //catch (Exception ex)
-            //{
-            //    Logger.LogGeneral(LogGeneralErrorType.Error, ClientType.None, commandText.Length > 50 ? commandText.Substring(0, 49) : commandText, ex, string.Empty);
-            //    return new DataTable();
-            //}
-            return new DataTable();
+            SqlConnection sqlcon = new SqlConnection(@"Data Source=LAPTOP-4ADVPLF2;Initial Catalog=WebSitem;Integrated Security=True");
+            sqlcon.Open();
+            SqlCommand cmd = new SqlCommand(commandText, sqlcon);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(dr);
+            sqlcon.Close();
+            return dt;
         }
 
         public static bool ExecuteNonQuery(CommandType storedProcedure, string commandText, ParameterInfo[] parameterNames, params object[] parameterValues)
