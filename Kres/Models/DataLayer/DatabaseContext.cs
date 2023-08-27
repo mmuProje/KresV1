@@ -10,7 +10,7 @@ namespace Kres.Models.DataLayer
 {
     public class DatabaseContext
     {
-        public static DataTable ExecuteReader(string commandText, ParameterInfo[] parameterNames, params object[] parameterValues)
+        public static DataTable ExecuteReader(CommandType storedProcedure, string commandText, ParameterInfo[] parameterNames, params object[] parameterValues)
         {
 
             SqlConnection sqlcon = new SqlConnection(@"Data Source=LAPTOP-4ADVPLF2;Initial Catalog=WebSitem;Integrated Security=True");
@@ -37,9 +37,21 @@ namespace Kres.Models.DataLayer
             return dt;
 
         }
+        public static DataTable ExecuteReader(CommandType commandType, string commandText)
+        {
+            SqlConnection sqlcon = new SqlConnection(@"Data Source=LAPTOP-4ADVPLF2;Initial Catalog=WebSitem;Integrated Security=True");
+            sqlcon.Open();
+            SqlCommand cmd = new SqlCommand(commandText, sqlcon);
+            cmd.CommandType = CommandType.StoredProcedure;
 
+            SqlDataReader dr = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(dr);
+            sqlcon.Close();
+            return dt;
+        }
 
-        public static bool ExecuteNonQuery(string commandText, ParameterInfo[] parameterNames, params object[] parameterValues)
+        public static bool ExecuteNonQuery(CommandType storedProcedure, string commandText, ParameterInfo[] parameterNames, params object[] parameterValues)
         {
             try
             {

@@ -25,22 +25,12 @@ namespace Kres.Models.EntityLayer
         #endregion
 
         #region Method
-        public static List<Teacher> GetAvailableInBasket()
-        {
-            List<Teacher> list = new List<Teacher>();
-            DataTable dt = DAL.GetBasketById();
-
-
-            return list;
-        }
+        
         #endregion
     }
 
     public partial class DataAccessLayer
     {
-        public DataTable GetBasketById()
-        {
-            return DatabaseContext.ExecuteReader("_GetList_BasketById", MethodBase.GetCurrentMethod().GetParameters(), new object[] {  });
-        }
+       
     }
 }
