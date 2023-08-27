@@ -173,6 +173,7 @@
     <Compile Include="Models\EntityLayer\PaymentContract.cs" />
     <Compile Include="Models\EntityLayer\PaymentControlDenizBankTemp.cs" />
     <Compile Include="Models\EntityLayer\PaymentValue.cs" />
+    <Compile Include="Models\EntityLayer\Picture.cs" />
     <Compile Include="Models\EntityLayer\PosBank.cs" />
     <Compile Include="Models\EntityLayer\PosBankDetail.cs" />
     <Compile Include="Models\EntityLayer\PosInstallment.cs" />
@@ -181,6 +182,7 @@
     <Compile Include="Models\EntityLayer\Serializer.cs" />
     <Compile Include="Models\EntityLayer\Student.cs" />
     <Compile Include="Models\EntityLayer\Teacher.cs" />
+    <Compile Include="Models\EntityLayer\TeacherOfStudent.cs" />
     <Compile Include="Models\Helper\BaseController.cs" />
     <Compile Include="Models\Helper\GlobalSettings.cs" />
     <Compile Include="Models\Helper\TuesPechkinInitializerService.cs" />
