@@ -46,11 +46,40 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="RestSharp, Version=106.12.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.12.0\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Text.Encodings.Web, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.7.0.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.7.0.2\lib\netstandard2.0\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -102,6 +131,12 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="TuesPechkin, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TuesPechkin.2.1.1\lib\net20\TuesPechkin.dll</HintPath>
+    </Reference>
+    <Reference Include="TuesPechkin.Wkhtmltox.AnyCPU, Version=0.12.4.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TuesPechkin.Wkhtmltox.AnyCPU.0.12.4.1\lib\net20\TuesPechkin.Wkhtmltox.AnyCPU.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -131,9 +166,40 @@
     <Compile Include="Models\DataLayer\DataAccess.cs" />
     <Compile Include="Models\DataLayer\DataAccessLayer.cs" />
     <Compile Include="Models\DataLayer\DatabaseContext.cs" />
+    <Compile Include="Models\EntityLayer\Banks.cs" />
+    <Compile Include="Models\EntityLayer\DocumentDraftcs.cs" />
+    <Compile Include="Models\EntityLayer\EPayment.cs" />
+    <Compile Include="Models\EntityLayer\FooterInformation.cs" />
+    <Compile Include="Models\EntityLayer\PaymentContract.cs" />
+    <Compile Include="Models\EntityLayer\PaymentControlDenizBankTemp.cs" />
+    <Compile Include="Models\EntityLayer\PaymentValue.cs" />
+    <Compile Include="Models\EntityLayer\PosBank.cs" />
+    <Compile Include="Models\EntityLayer\PosBankDetail.cs" />
+    <Compile Include="Models\EntityLayer\PosInstallment.cs" />
+    <Compile Include="Models\EntityLayer\PosOfBank.cs" />
+    <Compile Include="Models\EntityLayer\PosPaymentValue.cs" />
+    <Compile Include="Models\EntityLayer\Serializer.cs" />
+    <Compile Include="Models\EntityLayer\Student.cs" />
     <Compile Include="Models\EntityLayer\Teacher.cs" />
     <Compile Include="Models\Helper\BaseController.cs" />
+    <Compile Include="Models\Helper\GlobalSettings.cs" />
+    <Compile Include="Models\Helper\TuesPechkinInitializerService.cs" />
     <Compile Include="Models\Helper\UrlHelperExtensions.cs" />
+    <Compile Include="Models\Helper\VPosTransactionResponseContract.cs" />
+    <Compile Include="Models\Helper\XmlSerialization.cs" />
+    <Compile Include="Models\Log\BaseLog.cs" />
+    <Compile Include="Models\Log\Entities\LogGeneralError.cs" />
+    <Compile Include="Models\Log\Entities\LogLogin.cs" />
+    <Compile Include="Models\Log\Entities\LogNavigation .cs" />
+    <Compile Include="Models\Log\Entities\LogPayment.cs" />
+    <Compile Include="Models\Log\Entities\LogTransaction.cs" />
+    <Compile Include="Models\Log\EPayment\EPaymentLog.cs" />
+    <Compile Include="Models\Log\EPayment\EPaymentLogger.cs" />
+    <Compile Include="Models\Log\EPayment\Token.cs" />
+    <Compile Include="Models\Log\Logger.cs" />
+    <Compile Include="Models\RefundEntities\RefundPostParameters.cs" />
+    <Compile Include="Models\RefundEntities\RefundPostParametersDTO.cs" />
+    <Compile Include="Models\RefundEntities\ReturnParameters.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.6.1.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2021,7 +2087,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Models\Log\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>

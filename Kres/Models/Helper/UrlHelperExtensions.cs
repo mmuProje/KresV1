@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Kres.Models.Helper
+namespace Kres.Models.EntityLayer
 {
     public static class UrlHelperExtensions
     {
