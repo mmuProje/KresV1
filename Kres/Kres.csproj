@@ -189,6 +189,16 @@
     <Compile Include="Models\Helper\UrlHelperExtensions.cs" />
     <Compile Include="Models\Helper\VPosTransactionResponseContract.cs" />
     <Compile Include="Models\Helper\XmlSerialization.cs" />
+    <Compile Include="Models\Log\BaseLog.cs" />
+    <Compile Include="Models\Log\Entities\LogGeneralError.cs" />
+    <Compile Include="Models\Log\Entities\LogLogin.cs" />
+    <Compile Include="Models\Log\Entities\LogNavigation .cs" />
+    <Compile Include="Models\Log\Entities\LogPayment.cs" />
+    <Compile Include="Models\Log\Entities\LogTransaction.cs" />
+    <Compile Include="Models\Log\EPayment\EPaymentLog.cs" />
+    <Compile Include="Models\Log\EPayment\EPaymentLogger.cs" />
+    <Compile Include="Models\Log\EPayment\Token.cs" />
+    <Compile Include="Models\Log\Logger.cs" />
     <Compile Include="Models\RefundEntities\RefundPostParameters.cs" />
     <Compile Include="Models\RefundEntities\RefundPostParametersDTO.cs" />
     <Compile Include="Models\RefundEntities\ReturnParameters.cs" />
