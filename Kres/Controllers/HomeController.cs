@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kres.Models.EntityLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,15 @@ namespace Kres.Controllers
     {
         public ActionResult Index()
         {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult MyAction()
+        {
+
+            var banks = Banks.GetListByEpaymentById();
+
             return View();
         }
 

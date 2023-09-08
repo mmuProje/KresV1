@@ -10,10 +10,13 @@ namespace Kres.Models.DataLayer
 {
     public class DatabaseContext
     {
+
+        public static string ConnectionString { get { return @"Data Source=94.73.170.34;Initial Catalog=u1411774_kresV1;User ID=u1411774_userDb;Password=MustafaMertUfuk123"; } }
+
+
         public static DataTable ExecuteReader(CommandType storedProcedure, string commandText, ParameterInfo[] parameterNames, params object[] parameterValues)
         {
-
-            SqlConnection sqlcon = new SqlConnection(@"Data Source=LAPTOP-4ADVPLF2;Initial Catalog=WebSitem;Integrated Security=True");
+            SqlConnection sqlcon = new SqlConnection(ConnectionString);
             sqlcon.Open();
             SqlCommand cmd = new SqlCommand(commandText, sqlcon);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -39,7 +42,7 @@ namespace Kres.Models.DataLayer
         }
         public static DataTable ExecuteReader(CommandType commandType, string commandText)
         {
-            SqlConnection sqlcon = new SqlConnection(@"Data Source=LAPTOP-4ADVPLF2;Initial Catalog=WebSitem;Integrated Security=True");
+            SqlConnection sqlcon = new SqlConnection(ConnectionString);
             sqlcon.Open();
             SqlCommand cmd = new SqlCommand(commandText, sqlcon);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -55,7 +58,7 @@ namespace Kres.Models.DataLayer
         {
             try
             {
-                SqlConnection sqlcon = new SqlConnection(@"Data Source=LAPTOP-4ADVPLF2;Initial Catalog=WebSitem;Integrated Security=True");
+                SqlConnection sqlcon = new SqlConnection(ConnectionString);
                 sqlcon.Open();
                 SqlCommand cmd = new SqlCommand(commandText, sqlcon);
                 cmd.CommandType = CommandType.StoredProcedure;
