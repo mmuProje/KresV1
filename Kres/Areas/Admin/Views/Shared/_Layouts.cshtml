@@ -12,26 +12,25 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
+    <!-- icon -->
+    <link href="~/Content/Admin/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/Admin/font-awesome.min.css" rel="stylesheet" />
     <!-- site icon -->
     <link rel="icon" href="images/fevicon.png" type="image/png" />
-    <link rel="styleshee" href="~/Content/Admin/font-awesome.css" />
-    <link rel="styleshee" href="~/Content/Admin/font-awesome.min.css" />
-
-
     <!-- bootstrap css -->
-    <link rel="stylesheet" href="~/Content/Admin/bootstrap.min.css" />
+    <link href="~/Content/Admin/bootstrap.min.css" rel="stylesheet" />
     <!-- site css -->
-    <link rel="stylesheet" href="~/Content/Admin/style.css" />
+    <link href="~/Content/Admin/style.css" rel="stylesheet" />
     <!-- responsive css -->
-    <link rel="stylesheet" href="~/Content/Admin/responsive.css" />
+    <link href="~/Content/Admin/responsive.css" rel="stylesheet" />
     <!-- color css -->
     <link rel="stylesheet" href="~/Content/Admin/colors.css" />
     <!-- select bootstrap -->
-    <link rel="stylesheet" href="~/Content/Admin/bootstrap-select.css" />
+    <link href="~/Content/Admin/bootstrap-select.css" rel="stylesheet" />
     <!-- scrollbar css -->
-    <link rel="stylesheet" href="~/Content/Admin/perfect-scrollbar.css" />
+    <link href="~/Content/Admin/perfect-scrollbar.css" rel="stylesheet" />
     <!-- custom css -->
-    <link rel="stylesheet" href="~/Content/Admin/custom.css" />
+    <link href="~/Content/Admin/custom.css" rel="stylesheet" />
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -174,8 +173,7 @@
                     <div class="container-fluid">
                         <div class="footer">
                             <p>
-                                Copyright © 2018 Designed by html.design. All rights reserved.<br><br>
-                                Distributed By: <a href="https://themewagon.com/">ThemeWagon</a>
+                                Copyright © <span id="currentYear"></span> All Rights Reserved | MUM Software<br><br>                              
                             </p>
                         </div>
                     </div>
@@ -184,6 +182,11 @@
             </div>
         </div>
     </div>
+    <script>
+        var currentYear = new Date().getFullYear();
+        var currentYearElement = document.getElementById("currentYear");
+        currentYearElement.textContent = currentYear;
+    </script>
     <!-- jQuery -->
     <script src="~/Scripts/Admin/jquery.min.js"></script>
     <script src="~/Scripts/Admin/popper.min.js"></script>
