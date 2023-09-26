@@ -321,6 +321,7 @@
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="dist\account\overview.html" />
+    <Content Include="images\logo.png" />
     <Content Include="images\resume.png" />
     <Content Include="obj\Debug\Kres.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\Kres.dll" />
@@ -704,10 +705,11 @@
     <Content Include="Scripts\assets\media\illustrations\verification.png" />
     <Content Include="Scripts\assets\media\illustrations\winner.png" />
     <Content Include="Scripts\assets\media\illustrations\work.png" />
-    <Content Include="Scripts\assets\media\logos\favicon.ico" />
     <Content Include="Scripts\assets\media\logos\logo-compact.svg" />
     <Content Include="Scripts\assets\media\logos\logo-default.svg" />
     <Content Include="Scripts\assets\media\logos\logo-light.svg" />
+    <Content Include="Scripts\assets\media\logos\logo.ico" />
+    <Content Include="Scripts\assets\media\logos\logo.png" />
     <Content Include="Scripts\assets\media\misc\pattern-1.jpg" />
     <Content Include="Scripts\assets\media\misc\pattern-2.jpg" />
     <Content Include="Scripts\assets\media\misc\portfolio.png" />
