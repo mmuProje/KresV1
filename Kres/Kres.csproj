@@ -321,8 +321,16 @@
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="dist\account\overview.html" />
+    <Content Include="images\Homeicon\checklist.png" />
+    <Content Include="images\Homeicon\credit-card.png" />
+    <Content Include="images\Homeicon\gallery.png" />
+    <Content Include="images\Homeicon\meal-calendar.png" />
+    <Content Include="images\Homeicon\medicine.png" />
+    <Content Include="images\Homeicon\syllabus.png" />
+    <Content Include="images\Homeicon\teacher-message.png" />
+    <Content Include="images\Homeicon\teacher.png" />
     <Content Include="images\logo.png" />
-    <Content Include="images\resume.png" />
+    <Content Include="images\Homeicon\resume.png" />
     <Content Include="obj\Debug\Kres.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\Kres.dll" />
     <Content Include="obj\Debug\Kres.pdb" />
@@ -353,6 +361,8 @@
     <Content Include="Scripts\Admin\semantic.min.js" />
     <Content Include="Scripts\Admin\settings.html" />
     <Content Include="Scripts\Admin\utils.js" />
+    <Content Include="Scripts\angularApp.js" />
+    <Content Include="Scripts\angularServices.js" />
     <Content Include="Scripts\assets\css\style.bundle.css" />
     <Content Include="Scripts\assets\js\custom\documentation\base\indicator.js" />
     <Content Include="Scripts\assets\js\custom\documentation\base\rotate.js" />

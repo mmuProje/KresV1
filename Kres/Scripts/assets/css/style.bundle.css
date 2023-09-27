@@ -37089,6 +37089,7 @@ a:hover {
   border: 0;
 }
 .card > .card-header {
+    margin:0px auto;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
@@ -37164,6 +37165,9 @@ a:hover {
   position: relative;
   overflow: auto;
 }
+.img-center{
+    margin:0px auto;
+}
 .card.card-px-0 .card-header,
 .card.card-px-0 .card-body,
 .card.card-px-0 .card-footer {
@@ -37215,8 +37219,13 @@ a:hover {
   margin: 0;
   align-items: stretch;
 }
+.card.card-stretch-33.shadow-sm.mb-5:hover {
+    background-color: #a2ffa2;
+    cursor: pointer;
+    transition:1110ms;
+}
 @media (min-width: 576px) {
-  .card.card-sm-stretch {
+    .card.card-sm-stretch {
     height: calc(100% - var(--bs-gutter-y));
   }
   .card.card-sm-stretch-75 {
