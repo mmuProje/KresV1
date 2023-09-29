@@ -17,14 +17,31 @@
     <link href="/Scripts/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
     <link href="/Scripts/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
-    <!--Angular-->
-    <script src="~/Scripts/angularApp.js"></script>
-    <script src="~/Scripts/angularServices.js"></script>
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="todo.js"></script>
+    <link href="~/Scripts/angular.js" rel="stylesheet">
+    <link href="~/Scripts/angular-mocks.js" rel="stylesheet">
+    <link href="~/Scripts/angular-sanitize.js" rel="stylesheet">
+    <link href="~/Scripts/angular-resource.min.js" rel="stylesheet">
+    <link href="~/Scripts/jquery.unobtrusive-ajax.js" rel="stylesheet">
+    <link href="~/Scripts/jquery.unobtrusive-ajax.min.js" rel="stylesheet">
+    <link href="~/Scripts/jquery.validate-vsdoc.js" rel="stylesheet">
+    <link href="~/Scripts/jquery.validate.js" rel="stylesheet">
+    <link href="~/Scripts/jquery.validate.min.js" rel="stylesheet">
+
+
+
+
+
+    @*<script src="~/Scripts/angularApp.js"></script>
+        <script src="~/Scripts/angularServices.js"></script>*@
     <!--End Angular-->
 </head>
 <!--end::Head-->
 <!--begin::Body-->
-<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed aside-fixed aside-secondary-disabled">
+<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed aside-fixed aside-secondary-disabled" ng-app="LayoutApp" ng-cloak>
     <!--begin::Main-->
     <!--begin::Root-->
     <div class="d-flex flex-column flex-root">
@@ -1716,64 +1733,27 @@
                                     <!--end::Menu separator-->
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start" data-kt-menu-flip="bottom">
-                                        <a href="#" class="menu-link px-5">
-                                            <span class="menu-title position-relative">
-                                                Language
-                                                <span class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">
-                                                    English
-                                                    <img class="w-15px h-15px rounded-1 ms-2" src="/Scripts/assets/media/flags/united-states.svg" alt="metronic" />
-                                                </span>
-                                            </span>
-                                        </a>
-                                        <!--begin::Menu sub-->
-                                        <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link d-flex px-5 active">
-                                                    <span class="symbol symbol-20px me-4">
-                                                        <img class="rounded-1" src="/Scripts/assets/media/flags/united-states.svg" alt="metronic" />
-                                                    </span>English
-                                                </a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link d-flex px-5">
-                                                    <span class="symbol symbol-20px me-4">
-                                                        <img class="rounded-1" src="/Scripts/assets/media/flags/spain.svg" alt="metronic" />
-                                                    </span>Spanish
-                                                </a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link d-flex px-5">
-                                                    <span class="symbol symbol-20px me-4">
-                                                        <img class="rounded-1" src="/Scripts/assets/media/flags/germany.svg" alt="metronic" />
-                                                    </span>German
-                                                </a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link d-flex px-5">
-                                                    <span class="symbol symbol-20px me-4">
-                                                        <img class="rounded-1" src="/Scripts/assets/media/flags/japan.svg" alt="metronic" />
-                                                    </span>Japanese
-                                                </a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link d-flex px-5">
-                                                    <span class="symbol symbol-20px me-4">
-                                                        <img class="rounded-1" src="/Scripts/assets/media/flags/france.svg" alt="metronic" />
-                                                    </span>French
-                                                </a>
-                                            </div>
-                                            <!--end::Menu item-->
+                                        <div class="btn-group dropdown-language">
+
+                                            @*<button type="button" class="btn btn-custom dropdown-toggle lang-btn" data-toggle="dropdown">
+                    <span class="flag-icon {{CurrentLanguage.FlagImageFileName}}"></span>
+                </button>*@
+
+
+
+
+
+
+
+
                                         </div>
                                         <!--end::Menu sub-->
+                                        @*<ul>
+                                            <li ng-repeat="item in Language">
+
+                                                <span>{{item.Name}}</span>
+                                            </li>
+                                        </ul>*@
                                     </div>
                                     <!--end::Menu item-->
                                     <!--begin::Menu item-->
@@ -1785,6 +1765,11 @@
                                     <div class="menu-item px-5">
                                         <a href="#" class="menu-link px-5">Sign Out</a>
                                     </div>
+
+                                    <div class="menu-item px-5" ng-repeat="item in LanguageStr">
+                                        <a href="#" class="menu-link px-5">{{item.Name}}</a>
+                                    </div>
+
                                     <!--end::Menu item-->
                                 </div>
                                 <!--end::Menu-->
@@ -1823,7 +1808,7 @@
                             </li>
                             <li class="menu-item">
                                 <a href="https://keenthemes.com/support" target="_blank" class="menu-link px-2">Destek</a>
-                            </li>                           
+                            </li>
                         </ul>
                         <!--end::Menu-->
                     </div>
@@ -2484,232 +2469,227 @@
     </div>
     <!--end::Activities drawer-->
     <!--begin::Exolore drawer toggle-->
-
-
-
-
     <!-- Yandan Açılır Menü -->
-
     <!--<button id="kt_explore_toggle" class="explore-toggle btn btn-sm explore-btn-toggle shadow-sm position-fixed fw-bolder zindex-2 top-50 px-8 mt-10 end-0 transform-90 fs-5 rounded-top-0" title="Upgrade to Jet HTML Pro" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-dismiss="click" data-bs-trigger="hover">
         <span id="kt_explore_toggle_label">Upgrade to Pro</span>
     </button>
 
     <div id="kt_explore" class="explore bg-white" data-kt-drawer="true" data-kt-drawer-name="explore" data-kt-drawer-activate="true" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'300px', 'lg': '440px'}" data-kt-drawer-direction="end" data-kt-drawer-toggle="#kt_explore_toggle" data-kt-drawer-close="#kt_explore_close">-->
-        <!--begin::Card-->
-        <!--<div class="card shadow-none w-100">-->
-            <!--begin::Header-->
-            <!--<div class="card-header" id="kt_explore_header">
-                <h5 class="card-title fw-bold text-gray-600">Upgrade To Pro</h5>
-                <div class="card-toolbar">
-                    <button type="button" class="btn btn-sm btn-icon explore-btn-dismiss me-n5" id="kt_explore_close">-->
-                        <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
-                        <!--<span class="svg-icon svg-icon-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)" fill="#000000">
-                                    <rect fill="#000000" x="0" y="7" width="16" height="2" rx="1" />
-                                    <rect fill="#000000" opacity="0.5" transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)" x="0" y="7" width="16" height="2" rx="1" />
-                                </g>
-                            </svg>
-                        </span>-->
-                        <!--end::Svg Icon-->
-                    <!--</button>
-                </div>
-            </div>-->
-            <!--end::Header-->
-            <!--begin::Body-->
-            <!--<div class="card-body" id="kt_explore_body">-->
-                <!--begin::Content-->
-                <!--<div id="kt_explore_scroll" class="scroll-y me-n5 pe-5" data-kt-scroll="true" data-kt-scroll-height="auto" data-kt-scroll-wrappers="#kt_explore_body" data-kt-scroll-dependencies="#kt_explore_header, #kt_explore_footer" data-kt-scroll-offset="5px">-->
-                    <!--begin::Licenses-->
-                    <!--<div class="mb-5">-->
-                        <!--begin::Comparision-->
-                        <!--<table class="table table-row-dashed table-row-gray-300 align-middle fs-6 fw-bold text-gray-800 gs-0 gy-3">
-                            <tr class="border-bottom-0">
-                                <th class="fw-bolder text-dark fs-3">Pro Version Benefits</th>
-                                <th class="text-center">
-                                    <span class="bg-light py-2 px-4 fw-bold fs-6 rounded">Free</span>
-                                </th>
-                                <th class="text-center">
-                                    <span class="bg-light py-2 px-4 fw-bold fs-6 rounded">Pro</span>
-                                </th>
-                            </tr>
-                            <tr>
-                                <td>UI Elements</td>
-                                <td class="text-center">20</td>
-                                <td class="text-center">100</td>
-                            </tr>
-                            <tr>
-                                <td>In-house Components</td>
-                                <td class="text-center">20</td>
-                                <td class="text-center">40</td>
-                            </tr>
-                            <tr>
-                                <td>Crafted Pages</td>
-                                <td class="text-center">5</td>
-                                <td class="text-center">20</td>
-                            </tr>
-                            <tr>
-                                <td>Complete Documentation</td>
-                                <td class="text-center">-->
-                                    <!--begin::Svg Icon | path: icons/duotone/Code/Done-circle.svg-->
-                                    <!--<span class="svg-icon svg-icon-2 explore-icon-success">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                            <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
-                                        </svg>
-                                    </span>-->
-                                    <!--end::Svg Icon-->
-                                <!--</td>
-                                <td class="text-center">-->
-                                    <!--begin::Svg Icon | path: icons/duotone/Code/Done-circle.svg-->
-                                    <!--<span class="svg-icon svg-icon-2 explore-icon-success">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                            <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
-                                        </svg>
-                                    </span>-->
-                                    <!--end::Svg Icon-->
-                                <!--</td>
-                            </tr>
-                            <tr>
-                                <td>Product Support</td>
-                                <td class="text-center">-->
-                                    <!--begin::Svg Icon | path: icons/duotone/Code/Error-circle.svg-->
-                                    <!--<span class="svg-icon svg-icon-2 explore-icon-danger">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                            <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000" />
-                                        </svg>
-                                    </span>-->
-                                    <!--end::Svg Icon-->
-                                <!--</td>
-                                <td class="text-center">-->
-                                    <!--begin::Svg Icon | path: icons/duotone/Code/Done-circle.svg-->
-                                    <!--<span class="svg-icon svg-icon-2 explore-icon-success">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                            <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
-                                        </svg>
-                                    </span>-->
-                                    <!--end::Svg Icon-->
-                                <!--</td>
-                            </tr>
-                            <tr>
-                                <td>Layout Builder</td>
-                                <td class="text-center">-->
-                                    <!--begin::Svg Icon | path: icons/duotone/Code/Error-circle.svg-->
-                                    <!--<span class="svg-icon svg-icon-2 explore-icon-danger">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                            <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000" />
-                                        </svg>
-                                    </span>-->
-                                    <!--end::Svg Icon-->
-                                <!--</td>
-                                <td class="text-center">-->
-                                    <!--begin::Svg Icon | path: icons/duotone/Code/Done-circle.svg-->
-                                    <!--<span class="svg-icon svg-icon-2 explore-icon-success">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                            <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
-                                        </svg>
-                                    </span>-->
-                                    <!--end::Svg Icon-->
-                                <!--</td>
-                            </tr>
-                            <tr>
-                                <td>Email Templates</td>
-                                <td class="text-center">-->
-                                    <!--begin::Svg Icon | path: icons/duotone/Code/Error-circle.svg-->
-                                    <!--<span class="svg-icon svg-icon-2 explore-icon-danger">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                            <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000" />
-                                        </svg>
-                                    </span>-->
-                                    <!--end::Svg Icon-->
-                                <!--</td>
-                                <td class="text-center">-->
-                                    <!--begin::Svg Icon | path: icons/duotone/Code/Done-circle.svg-->
-                                    <!--<span class="svg-icon svg-icon-2 explore-icon-success">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                            <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
-                                        </svg>
-                                    </span>-->
-                                    <!--end::Svg Icon-->
-                                <!--</td>
-                            </tr>
-                            <tr>
-                                <td>Chat App</td>
-                                <td class="text-center">-->
-                                    <!--begin::Svg Icon | path: icons/duotone/Code/Error-circle.svg-->
-                                    <!--<span class="svg-icon svg-icon-2 explore-icon-danger">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                            <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000" />
-                                        </svg>
-                                    </span>-->
-                                    <!--end::Svg Icon-->
-                                <!--</td>
-                                <td class="text-center">-->
-                                    <!--begin::Svg Icon | path: icons/duotone/Code/Done-circle.svg-->
-                                    <!--<span class="svg-icon svg-icon-2 explore-icon-success">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                            <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
-                                        </svg>
-                                    </span>-->
-                                    <!--end::Svg Icon-->
-                                <!--</td>
-                            </tr>
-                            <tr>
-                                <td>Customers App</td>
-                                <td class="text-center">-->
-                                    <!--begin::Svg Icon | path: icons/duotone/Code/Error-circle.svg-->
-                                    <!--<span class="svg-icon svg-icon-2 explore-icon-danger">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                            <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000" />
-                                        </svg>
-                                    </span>-->
-                                    <!--end::Svg Icon-->
-                                <!--</td>
-                                <td class="text-center">-->
-                                    <!--begin::Svg Icon | path: icons/duotone/Code/Done-circle.svg-->
-                                    <!--<span class="svg-icon svg-icon-2 explore-icon-success">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                            <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
-                                        </svg>
-                                    </span>-->
-                                    <!--end::Svg Icon-->
-                                <!--</td>
-                            </tr>
-                        </table>-->
-                        <!--end::Comparision-->
-                    <!--</div>-->
-                    <!--end::Licenses-->
-                    <!--begin::Link-->
-                    <!--<a href="https://keenthemes.com/products/jet-html-pro" class="btn btn-lg explore-btn-primary w-100">
-                        Upgrade to
-                        <span class="fw-bolder ms-1">Jet HTML Pro</span>
-                    </a>-->
-                    <!--end::Link-->
-                <!--</div>-->
-                <!--end::Content-->
-            <!--</div>-->
-            <!--end::Body-->
-            <!--begin::Footer-->
-            <!--<div class="card-footer py-5 text-center" id="kt_explore_footer">
-                <a href="https://keenthemes.com/products/jet-html-free" class="btn btn-lg explore-btn-secondary w-100">
-                    Download
-                    <span class="fw-bolder ms-1">Jet HTML Free</span>
-                </a>
-            </div>-->
-            <!--end::Footer-->
-        <!--</div>-->
-        <!--end::Card-->
+    <!--begin::Card-->
+    <!--<div class="card shadow-none w-100">-->
+    <!--begin::Header-->
+    <!--<div class="card-header" id="kt_explore_header">
+        <h5 class="card-title fw-bold text-gray-600">Upgrade To Pro</h5>
+        <div class="card-toolbar">
+            <button type="button" class="btn btn-sm btn-icon explore-btn-dismiss me-n5" id="kt_explore_close">-->
+    <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
+    <!--<span class="svg-icon svg-icon-2">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+            <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)" fill="#000000">
+                <rect fill="#000000" x="0" y="7" width="16" height="2" rx="1" />
+                <rect fill="#000000" opacity="0.5" transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)" x="0" y="7" width="16" height="2" rx="1" />
+            </g>
+        </svg>
+    </span>-->
+    <!--end::Svg Icon-->
+    <!--</button>
+        </div>
+    </div>-->
+    <!--end::Header-->
+    <!--begin::Body-->
+    <!--<div class="card-body" id="kt_explore_body">-->
+    <!--begin::Content-->
+    <!--<div id="kt_explore_scroll" class="scroll-y me-n5 pe-5" data-kt-scroll="true" data-kt-scroll-height="auto" data-kt-scroll-wrappers="#kt_explore_body" data-kt-scroll-dependencies="#kt_explore_header, #kt_explore_footer" data-kt-scroll-offset="5px">-->
+    <!--begin::Licenses-->
+    <!--<div class="mb-5">-->
+    <!--begin::Comparision-->
+    <!--<table class="table table-row-dashed table-row-gray-300 align-middle fs-6 fw-bold text-gray-800 gs-0 gy-3">
+        <tr class="border-bottom-0">
+            <th class="fw-bolder text-dark fs-3">Pro Version Benefits</th>
+            <th class="text-center">
+                <span class="bg-light py-2 px-4 fw-bold fs-6 rounded">Free</span>
+            </th>
+            <th class="text-center">
+                <span class="bg-light py-2 px-4 fw-bold fs-6 rounded">Pro</span>
+            </th>
+        </tr>
+        <tr>
+            <td>UI Elements</td>
+            <td class="text-center">20</td>
+            <td class="text-center">100</td>
+        </tr>
+        <tr>
+            <td>In-house Components</td>
+            <td class="text-center">20</td>
+            <td class="text-center">40</td>
+        </tr>
+        <tr>
+            <td>Crafted Pages</td>
+            <td class="text-center">5</td>
+            <td class="text-center">20</td>
+        </tr>
+        <tr>
+            <td>Complete Documentation</td>
+            <td class="text-center">-->
+    <!--begin::Svg Icon | path: icons/duotone/Code/Done-circle.svg-->
+    <!--<span class="svg-icon svg-icon-2 explore-icon-success">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+            <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
+        </svg>
+    </span>-->
+    <!--end::Svg Icon-->
+    <!--</td>
+    <td class="text-center">-->
+    <!--begin::Svg Icon | path: icons/duotone/Code/Done-circle.svg-->
+    <!--<span class="svg-icon svg-icon-2 explore-icon-success">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+            <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
+        </svg>
+    </span>-->
+    <!--end::Svg Icon-->
+    <!--</td>
+    </tr>
+    <tr>
+        <td>Product Support</td>
+        <td class="text-center">-->
+    <!--begin::Svg Icon | path: icons/duotone/Code/Error-circle.svg-->
+    <!--<span class="svg-icon svg-icon-2 explore-icon-danger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+            <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000" />
+        </svg>
+    </span>-->
+    <!--end::Svg Icon-->
+    <!--</td>
+    <td class="text-center">-->
+    <!--begin::Svg Icon | path: icons/duotone/Code/Done-circle.svg-->
+    <!--<span class="svg-icon svg-icon-2 explore-icon-success">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+            <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
+        </svg>
+    </span>-->
+    <!--end::Svg Icon-->
+    <!--</td>
+    </tr>
+    <tr>
+        <td>Layout Builder</td>
+        <td class="text-center">-->
+    <!--begin::Svg Icon | path: icons/duotone/Code/Error-circle.svg-->
+    <!--<span class="svg-icon svg-icon-2 explore-icon-danger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+            <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000" />
+        </svg>
+    </span>-->
+    <!--end::Svg Icon-->
+    <!--</td>
+    <td class="text-center">-->
+    <!--begin::Svg Icon | path: icons/duotone/Code/Done-circle.svg-->
+    <!--<span class="svg-icon svg-icon-2 explore-icon-success">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+            <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
+        </svg>
+    </span>-->
+    <!--end::Svg Icon-->
+    <!--</td>
+    </tr>
+    <tr>
+        <td>Email Templates</td>
+        <td class="text-center">-->
+    <!--begin::Svg Icon | path: icons/duotone/Code/Error-circle.svg-->
+    <!--<span class="svg-icon svg-icon-2 explore-icon-danger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+            <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000" />
+        </svg>
+    </span>-->
+    <!--end::Svg Icon-->
+    <!--</td>
+    <td class="text-center">-->
+    <!--begin::Svg Icon | path: icons/duotone/Code/Done-circle.svg-->
+    <!--<span class="svg-icon svg-icon-2 explore-icon-success">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+            <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
+        </svg>
+    </span>-->
+    <!--end::Svg Icon-->
+    <!--</td>
+    </tr>
+    <tr>
+        <td>Chat App</td>
+        <td class="text-center">-->
+    <!--begin::Svg Icon | path: icons/duotone/Code/Error-circle.svg-->
+    <!--<span class="svg-icon svg-icon-2 explore-icon-danger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+            <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000" />
+        </svg>
+    </span>-->
+    <!--end::Svg Icon-->
+    <!--</td>
+    <td class="text-center">-->
+    <!--begin::Svg Icon | path: icons/duotone/Code/Done-circle.svg-->
+    <!--<span class="svg-icon svg-icon-2 explore-icon-success">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+            <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
+        </svg>
+    </span>-->
+    <!--end::Svg Icon-->
+    <!--</td>
+    </tr>
+    <tr>
+        <td>Customers App</td>
+        <td class="text-center">-->
+    <!--begin::Svg Icon | path: icons/duotone/Code/Error-circle.svg-->
+    <!--<span class="svg-icon svg-icon-2 explore-icon-danger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+            <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000" />
+        </svg>
+    </span>-->
+    <!--end::Svg Icon-->
+    <!--</td>
+    <td class="text-center">-->
+    <!--begin::Svg Icon | path: icons/duotone/Code/Done-circle.svg-->
+    <!--<span class="svg-icon svg-icon-2 explore-icon-success">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+            <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero" />
+        </svg>
+    </span>-->
+    <!--end::Svg Icon-->
+    <!--</td>
+        </tr>
+    </table>-->
+    <!--end::Comparision-->
+    <!--</div>-->
+    <!--end::Licenses-->
+    <!--begin::Link-->
+    <!--<a href="https://keenthemes.com/products/jet-html-pro" class="btn btn-lg explore-btn-primary w-100">
+        Upgrade to
+        <span class="fw-bolder ms-1">Jet HTML Pro</span>
+    </a>-->
+    <!--end::Link-->
+    <!--</div>-->
+    <!--end::Content-->
+    <!--</div>-->
+    <!--end::Body-->
+    <!--begin::Footer-->
+    <!--<div class="card-footer py-5 text-center" id="kt_explore_footer">
+        <a href="https://keenthemes.com/products/jet-html-free" class="btn btn-lg explore-btn-secondary w-100">
+            Download
+            <span class="fw-bolder ms-1">Jet HTML Free</span>
+        </a>
+    </div>-->
+    <!--end::Footer-->
+    <!--</div>-->
+    <!--end::Card-->
     <!--</div>-->
 
 
@@ -3471,6 +3451,7 @@
     <!--end::Global Javascript Bundle-->
     <!--begin::Page Custom Javascript(used by this page)-->
     <script src="/Scripts/assets/js/custom/widgets.js"></script>
+    <script src="~/Scripts/Pages/Layout.js"></script>
     <!--end::Page Custom Javascript-->
     <!--end::Javascript-->
 </body>

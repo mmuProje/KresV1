@@ -40,12 +40,58 @@ namespace Kres.Models.EntityLayer
         #endregion
 
         #region Method
+        public static Teacher GetById(int pId)
+        {
+            Teacher item = new Teacher();
+            //DataTable dt = DAL.GetTeacherById(pId);
 
+            //if (dt.Rows.Count > 0)
+            //{
+            //    DataRow row = dt.Rows[0];
+            //    item.BasketDiscountRate = row.Field<double>("BasketDiscountRate");
+            //    item.Id = row.Field<int>("Id");
+            //    item.Code = row.Field<string>("Code");
+            //    item.Name = row.Field<string>("Name");
+            //    item.Tel1 = row.Field<string>("Tel1");
+            //    item.Tel2 = row.Field<string>("Tel2");
+            //    item.Email = row.Field<string>("Email");
+            //    item.Password = row.Field<string>("Password");
+            //    item.NumberOfUserB2b = row.Field<int>("NumberOfUserB2b");
+            //    item.NumberOfUserAndroid = row.Field<int>("NumberOfUserAndroid");
+            //    item.NumberOfUserModerator = row.Field<int>("NumberOfUserModerator");
+            //    item.NumberOfUserIos = row.Field<int>("NumberOfUserIos");
+            //    item.IsAutoLock = row.Field<bool>("IsAutoLock");
+            //    item.IntervalTime = row.Field<int>("ModeratorIntervalTime");
+            //    item.IsAuthenticator = row.Field<bool>("IsAuthenticator");
+            //    item.IsB2bAuthenticator = row.Field<bool>("IsB2bAuthenticator");
+            //    item.IsSystemUser = row.Field<bool>("IsSystemUser");
+            //    item.ShowB2bStatusMessage = row.Field<bool>("ShowB2bStatusMessage");
+            //    item.AuthenticatorGuid = row.Field<string>("AuthenticatorGuid");
+            //    item.ManagerSalesmanId = row.Field<string>("ManagerSalesmanId");
+            //    item.PicturePath = row.Field<string>("PicturePath") == string.Empty || row.Field<string>("PicturePath") == null ? "../Content/Admin/images/noavatar.png" : GlobalSettings.FtpServerAddressFull + row.Field<string>("PicturePath");
+            //    item.AuthoritySalesman = new AuthoritySalesman()
+            //    {
+            //        SalesmanId = row.Field<int>("Id"),
+            //        CampaignStatu = row.Field<bool>("CampaignStatu"),
+            //        ProductRestoration = row.Field<bool>("ProductRestoration"),
+            //        LockSalesman = row.Field<bool>("LockSalesman"),
+            //        Collecting = row.Field<bool>("Collecting"),
+            //        EnteringInformation = row.Field<bool>("EnteringInformation"),
+            //        CheckBasket = row.Field<bool>("CheckBasket"),
+            //        CustomerType = row.Field<bool>("CustomerType"),
+            //        HidePassword = row.Field<bool>("HidePassword"),
+            //        WebLogin = row.Field<bool>("WebLogin"),
+            //        IsSpecDiscount = row.Field<bool>("IsSpecDiscount"),
+            //    };
+            //}
+
+            return item;
+        }
         #endregion
     }
 
     public partial class DataAccessLayer
     {
-       
+
     }
 }

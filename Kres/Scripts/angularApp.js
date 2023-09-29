@@ -1,7 +1,7 @@
-﻿var adminApp = angular.module('adminApp', ['ngSanitize', 'ngTable', 'ngResource', 'pascalprecht.translate']);
-var reportApp = angular.module('reportApp', ['ngSanitize', 'ngTable', 'ngResource', 'pascalprecht.translate']);
+﻿var LayoutApp = angular.module('LayoutApp', ['ngSanitize', 'ngTable', 'ngResource', 'pascalprecht.translate']);
+//var reportApp = angular.module('reportApp', ['ngSanitize', 'ngTable', 'ngResource', 'pascalprecht.translate']);
 
-adminApp.filter("jsonDate", function () {
+LayoutApp.filter("jsonDate", function () {
 
     return function (x) {
         return new Date(parseInt(x.substr(6)));
@@ -36,7 +36,7 @@ adminApp.filter("jsonDate", function () {
     };
 });
 
-adminApp.run(['$rootScope', '$http', '$interval', '$translate', function ($rootScope, $http, $interval, $translate) {
+LayoutApp.run(['$rootScope', '$http', '$interval', '$translate', function ($rootScope, $http, $interval, $translate) {
 
     $rootScope.authorityAccessList = [];
     $rootScope.getAuthorityAccessList = function (type) {
@@ -293,7 +293,7 @@ b2bApp.config(["$translateProvider", function ($translateProvider) {
     });
 }]);
 
-adminApp.config(["$translateProvider", function ($translateProvider) {
+LayoutApp.config(["$translateProvider", function ($translateProvider) {
     $.ajax({
         url: '/Admin/Home/GetCurrentLanguageInfo',
         method: "POST",
