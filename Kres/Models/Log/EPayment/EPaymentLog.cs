@@ -1,5 +1,6 @@
 ﻿using System;
 using Kres.Models.EntityLayer;
+using Kres.Models.Helper;
 using Newtonsoft.Json;
 
 namespace Kres.Models.EntityLayer

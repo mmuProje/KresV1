@@ -1,24 +1,8 @@
-﻿////LayoutApp.controller('LayoutController', ['$scope', '$http', function ($scope, $http) {
-
-
-
-////    $(document).ready(function () {
-////        $http({
-////            method: "POST",
-////            url: "/Home/GetLanguageList",
-////            headers: { "Content-Type": "Application/json;charset=utf-8" },
-////            data: {}
-////        }).then(function (response) {
-
-        
-////        });
-////    });
-////}]);
-
-angular.module('LayoutApp', [])
+﻿angular.module('LayoutApp', [])
     .controller('LayoutController', function ($scope, $http) {
-        $scope.LanguageStr = {};
+
         $(document).ready(function () {
+
             $http({
                 method: "POST",
                 url: "/Home/GetLanguageList",
@@ -29,6 +13,7 @@ angular.module('LayoutApp', [])
                 $scope.LanguageStr = response.data;
 
             });
+
         });
 
 

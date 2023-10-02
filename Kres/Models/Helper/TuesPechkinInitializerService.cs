@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using TuesPechkin;
 
-namespace Kres.Models.EntityLayer
+namespace Kres.Models.Helper
 {
     public static class TuesPechkinInitializerService
     {

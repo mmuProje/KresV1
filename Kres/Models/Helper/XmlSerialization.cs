@@ -6,7 +6,7 @@ using System.Text;
 using System.Web;
 using System.Xml.Serialization;
 
-namespace Kres.Models.EntityLayer
+namespace Kres.Models.Helper
 {
     public static class XmlSerialization
     {

@@ -4,6 +4,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using Kres.Models.EntityLayer;
+using Kres.Models.Helper;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 

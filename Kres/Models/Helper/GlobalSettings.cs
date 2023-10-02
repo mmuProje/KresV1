@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace Kres.Models.EntityLayer
+namespace Kres.Models.Helper
 {
     public class GlobalSettings
     {

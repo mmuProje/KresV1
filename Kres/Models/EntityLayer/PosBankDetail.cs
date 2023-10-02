@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 using Kres.Models.DataLayer;
+using Kres.Models.Helper;
 
 namespace Kres.Models.EntityLayer
 {

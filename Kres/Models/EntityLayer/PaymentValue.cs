@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kres.Models.Helper;
+using System;
 
 namespace Kres.Models.EntityLayer
 {
