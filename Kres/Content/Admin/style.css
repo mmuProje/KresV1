@@ -721,19 +721,20 @@ a:focus {
                 width: auto;
                 border-radius: 0;
                 background: #08f391;
-                margin: 0;
-                padding: 12px 0 12px 20px;
+                margin: 9px;
+                padding: 4px 0 4px 25px;
                 height: auto;
             }
 
 .sidebar_toggle {
     border: none;
-    padding: 14px 26px 14px;
+    padding: 6px 19px 7px;
     font-size: 21px;
     background: #08f391;
     margin-right: 0;
     cursor: pointer;
     float: left;
+    margin-top:8px;
 }
 
 .icon_info span.badge {
