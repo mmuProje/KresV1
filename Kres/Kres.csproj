@@ -158,6 +158,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomesController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminLoginController.cs" />
+    <Compile Include="Areas\Admin\Models\AdminBaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
@@ -169,6 +170,8 @@
     <Compile Include="Models\EntityLayer\Banks.cs" />
     <Compile Include="Models\EntityLayer\CurrentSession.cs" />
     <Compile Include="Models\EntityLayer\DocumentDraftcs.cs" />
+    <Compile Include="Models\EntityLayer\EMailGroup.cs" />
+    <Compile Include="Models\EntityLayer\EmailSender.cs" />
     <Compile Include="Models\EntityLayer\EPayment.cs" />
     <Compile Include="Models\EntityLayer\FooterInformation.cs" />
     <Compile Include="Models\EntityLayer\Language.cs" />
@@ -187,6 +190,7 @@
     <Compile Include="Models\EntityLayer\Teacher.cs" />
     <Compile Include="Models\EntityLayer\TeacherOfStudent.cs" />
     <Compile Include="Models\Helper\BaseController.cs" />
+    <Compile Include="Models\Helper\EmailHelper.cs" />
     <Compile Include="Models\Helper\GlobalSettings.cs" />
     <Compile Include="Models\Helper\TuesPechkinInitializerService.cs" />
     <Compile Include="Models\Helper\UrlHelperExtensions.cs" />
@@ -1925,7 +1929,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>

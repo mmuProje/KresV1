@@ -37,6 +37,8 @@ namespace Kres.Models.EntityLayer
         public int Status { get; set; }
         public int Deleted { get; set; }
         public int Type { get; set; }
+        public bool IsSystemUser { get; set; }
+        public bool Locked { get; set; }
         #endregion
 
         #region Method
