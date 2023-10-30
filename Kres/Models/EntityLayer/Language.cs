@@ -39,6 +39,7 @@ namespace Kres.Models.EntityLayer
                 language.LanguageCulture = row.Field<string>("LanguageCulture");
                 language.Name = row.Field<string>("Name");
                 language.UniqueSeoCode = row.Field<string>("UniqueSeoCode");
+                language.IsSelected = row.Field<bool>("IsSelected");
                 list.Add(language);
             }
             return list;

@@ -34,6 +34,7 @@ namespace Kres.Controllers
         public JsonResult GetLanguageList()
         {
             var language = Language.GetList();
+            LanguageList = language;
             return Json(language);
         }
         [HttpPost]

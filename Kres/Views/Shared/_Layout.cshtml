@@ -1667,7 +1667,7 @@
                                         <!--end::Menu separator-->
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-5">
-                                            <a href="account/overview.html" class="menu-link px-5">Profile</a>
+                                            <a href="account/overview.html" class="menu-link px-5">@(("Layout.Menu.Profile").toLanguage())</a>
                                         </div>
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
@@ -1772,15 +1772,9 @@
                                         </div>
 
                                         <div class="menu-item px-5" ng-repeat="item in LanguageStr">
-                                            <a href="#" class="menu-link px-5">{{item.Name}}</a>
+                                            <a href="#" ng-click="fireSetLanguageId(item.Id)" class="menu-link px-5">{{item.Name}}</a>
 
                                         </div>
-
-                                        <div class="menu-item px-5">
-                                            <span>@(("Name").toLanguage())</span>
-
-                                        </div>
-
                                         <!--end::Menu item-->
                                     </div>
                                     <!--end::Menu-->
