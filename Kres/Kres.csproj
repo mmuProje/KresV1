@@ -53,6 +53,9 @@
     <Reference Include="RestSharp, Version=106.12.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.106.12.0\lib\net452\RestSharp.dll</HintPath>
     </Reference>
+    <Reference Include="Select.HtmlToPdf, Version=23.1.0.0, Culture=neutral, PublicKeyToken=e0ae9f6e27a97018, processorArchitecture=MSIL">
+      <HintPath>..\packages\Select.HtmlToPdf.23.1.0\lib\net40\Select.HtmlToPdf.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -156,6 +159,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminPaymentController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomesController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminLoginController.cs" />
     <Compile Include="Areas\Admin\Models\AdminBaseController.cs" />
@@ -192,6 +196,7 @@
     <Compile Include="Models\Helper\BaseController.cs" />
     <Compile Include="Models\Helper\EmailHelper.cs" />
     <Compile Include="Models\Helper\GlobalSettings.cs" />
+    <Compile Include="Models\Helper\JsonSerializer.cs" />
     <Compile Include="Models\Helper\TuesPechkinInitializerService.cs" />
     <Compile Include="Models\Helper\UrlHelperExtensions.cs" />
     <Compile Include="Models\Helper\VPosTransactionResponseContract.cs" />
@@ -363,6 +368,8 @@
     <Content Include="Scripts\Admin\jquery.fancybox.min.js" />
     <Content Include="Scripts\Admin\jquery.min.js" />
     <Content Include="Scripts\Admin\owl.carousel.js" />
+    <Content Include="Scripts\Admin\payment.js" />
+    <Content Include="Scripts\Admin\paymentDetail.js" />
     <Content Include="Scripts\Admin\perfect-scrollbar.min.js" />
     <Content Include="Scripts\Admin\popper.min.js" />
     <Content Include="Scripts\Admin\semantic.min.js" />
@@ -1151,6 +1158,8 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Areas\Admin\Views\AdminPayment\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminPayment\Detail.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
     <Content Include="Scripts\i18n\angular-locale_af-za.js" />

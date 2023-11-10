@@ -76,25 +76,25 @@ namespace Kres.Areas.Admin.Models
         {
             base.OnActionExecuting(filterContext);
 
-            if (!filterContext.Controller.ControllerContext.HttpContext.Request.CurrentExecutionFilePath.Contains("FireSyncDesign"))
-            {
-                if (AdminCurrentTeacher == null || AdminCurrentTeacher.Id == 0)
-                {
-                    filterContext.Result = new RedirectResult("~/Admin/Login/Logout");
-                }
-                else if (AdminCurrentTeacher.Locked)
-                {
-                    filterContext.Result = new RedirectResult("~/Admin/Login/Locked");
-                }
-                else
-                {
-                    if (GetControllerName() != "Home=>GetLocaleString")
-                        Logger.LogNavigation(-1, -1, AdminCurrentTeacher.Id, GetControllerName(), ClientType.Admin, GetUserIpAddress());
+            //if (!filterContext.Controller.ControllerContext.HttpContext.Request.CurrentExecutionFilePath.Contains("FireSyncDesign"))
+            //{
+            //    if (AdminCurrentTeacher == null || AdminCurrentTeacher.Id == 0)
+            //    {
+            //        filterContext.Result = new RedirectResult("~/Admin/Login/Logout");
+            //    }
+            //    else if (AdminCurrentTeacher.Locked)
+            //    {
+            //        filterContext.Result = new RedirectResult("~/Admin/Login/Locked");
+            //    }
+            //    else
+            //    {
+            //        if (GetControllerName() != "Home=>GetLocaleString")
+            //            Logger.LogNavigation(-1, -1, AdminCurrentTeacher.Id, GetControllerName(), ClientType.Admin, GetUserIpAddress());
 
-                    ViewBag.AdminCurrentTeacher = AdminCurrentTeacher;
-                }
+            //        ViewBag.AdminCurrentTeacher = AdminCurrentTeacher;
+            //    }
 
-            }
+            //}
 
             
             ViewBag.SystemPaymentControlInformation = Session["SystemPaymentControlInformation"];
@@ -111,14 +111,14 @@ namespace Kres.Areas.Admin.Models
 
 
         }
-        protected override void OnAuthorization(AuthorizationContext filterContext)
-        {
-            if (filterContext.HttpContext.Session["AdminTeacher"] == null)
-            {
-                filterContext.Result = new RedirectResult("~/Admin/Login/Logout");
-            }
+        //protected override void OnAuthorization(AuthorizationContext filterContext)
+        //{
+        //    if (filterContext.HttpContext.Session["AdminTeacher"] == null)
+        //    {
+        //        filterContext.Result = new RedirectResult("~/Admin/Login/Logout");
+        //    }
 
-        }
+        //}
 
         
 

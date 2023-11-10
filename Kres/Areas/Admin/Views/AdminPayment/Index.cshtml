@@ -1,0 +1,355 @@
+﻿@using System.Web
+@using Kres.Models.Helper
+@{
+   // ViewBag.Title = "Sanal Poslar";
+}
+
+@section cStyleLibrary{
+    @*@Styles.Render("~/Scripts/Admin/vendor/nestable/css/style.css")*@
+}
+
+@section cStyleCode{
+    <style type="text/css">
+        .table {
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tbody-class {
+            display: table-row-group;
+            position: relative;
+            vertical-align: middle;
+            border-color: inherit;
+        }
+
+        .tr-class {
+            display: table-row;
+            vertical-align: inherit;
+            border-color: inherit;
+        }
+
+        .tr-class,
+        .dd-empty,
+        .dd-placeholder {
+            display: table-row;
+            vertical-align: inherit;
+            border-color: inherit;
+        }
+
+        .dd-empty,
+        .dd-placeholder {
+            padding: 0;
+            min-height: 30px;
+            background: #f2fbff;
+            border: 1px dashed #b6bcbf;
+        }
+
+        .dd-dragel {
+            position: absolute;
+            margin: 0 !important;
+            padding: 0 !important;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .tbody-class.dd-dragel {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+            .tbody-class.dd-dragel .tr-class {
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+        .dd-dragel > .tr-class {
+            margin: 0;
+            padding: 0 !important;
+        }
+
+            .dd-dragel > .tr-class .checkbox.checkbox-custom {
+                margin: 0;
+            }
+
+        textarea {
+            background-color: #ffffff !important;
+            background-image: linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px), linear-gradient(#eee .1em, transparent .1em) !important;
+            background-size: 100% 1.2em;
+        }
+    </style>
+}
+
+<div class="page page-payment" ng-controller="paymentController">
+    <div class="pageheader">
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    <a href="/Admin"><i class="fa fa-home"></i> Eryaz</a>
+                </li>
+                <li>
+                    <a href="javascript:;">İşlemler</a>
+                </li>
+                <li>
+                    <a href="javascript:;">Sanal Pos</a>
+                </li>
+                <li>
+                    <a href="javascript:;">Sanal Pos Tanımlama</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <!-- page content -->
+    <div class="pagecontent">
+        <div class="row">
+            <!-- col -->
+            <div class="col-sm-12">
+                <!-- tile -->
+                <section class="tile">
+                    <!-- tile header -->
+                    <div class="tile-header bg-blue dvd dvd-btm">
+                        <h1 class="custom-font"><strong>Sanal </strong>Poslar</h1>
+                    </div>
+                    <!-- /tile header -->
+                    <!-- tile body -->
+                    <div class="tile-body p-10">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div id="tBodyPaymentList" class="table-responsive">
+                                    <table class="table table-condensed table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Banka Adı</th>
+                                                <th>Kredi Kartı</th>
+                                                <th class="text-center">
+                                                    <div class="onoffswitch greensea inline-block medium">
+                                                        <input type="checkbox" id="cbPaymentStatuAll" name="cbPaymentStatuAllName" checked="checked" disabled="disabled" class="onoffswitch-checkbox" />
+                                                        <label for="cbPaymentStatuAll" class="onoffswitch-label">
+                                                            <span class="onoffswitch-inner"></span>
+                                                            <span class="onoffswitch-switch"></span>
+                                                        </label>
+                                                    </div>
+                                                </th>
+                                                <th class="text-center">
+                                                    <div class="onoffswitch primary inline-block medium">
+                                                        <input type="radio" id="rbPaymentMainPosAll" name="rbPaymentMainPosAllName" checked="checked" disabled="disabled" class="onoffswitch-checkbox" />
+                                                        <label for="rbPaymentMainPosAll" class="onoffswitch-label">
+                                                            <span class="onoffswitch-inner"></span>
+                                                            <span class="onoffswitch-switch"></span>
+                                                        </label>
+                                                    </div>
+                                                </th>
+                                                <th class="text-center">
+                                                    <div class="onoffswitch lightred inline-block medium">
+                                                        <input type="radio" id="rbPaymentOneShotBankAll" name="rbPaymentOneShotBankAllName" checked="checked" disabled="disabled" class="onoffswitch-checkbox" />
+                                                        <label for="rbPaymentOneShotBankAll" class="onoffswitch-label">
+                                                            <span class="onoffswitch-inner"></span>
+                                                            <span class="onoffswitch-switch"></span>
+                                                        </label>
+                                                    </div>
+                                                </th>
+                                                <td class="text-center">
+                                                    <div class="onoffswitch drank inline-block medium">
+                                                        <input type="checkbox" id="cbPaymentOneShotBankCancelAll" name="cbPaymentOneShotBankCancelAllName" checked="checked" disabled="disabled" class="onoffswitch-checkbox" />
+                                                        <label for="cbPaymentOneShotBankCancelAll" class="onoffswitch-label">
+                                                            <span class="onoffswitch-inner"></span>
+                                                            <span class="onoffswitch-switch"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <th class="text-center">Detay</th>
+                                                <th class="text-center">Sıra</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="tbody-class">
+                                            <tr data-id="{{bankItem.Id}}" data-ab="{{bankItem.Id}}" class="tr-class" ng-repeat="bankItem in bankList">
+                                                <td class="text-left">{{bankItem.BankName}}</td>
+                                                <td class="text-left">{{bankItem.CardType}}</td>
+                                                <td class="text-center">
+                                                    <div class="onoffswitch greensea inline-block medium">
+                                                        <input type="checkbox" id="cbPaymentStatu{{bankItem.Id}}" name="cbPaymentStatuName" ng-checked="bankItem.Active" ng-model="bankItem.Active" ng-change="changeSwitch(bankItem)" class="onoffswitch-checkbox" />
+                                                        <label for="cbPaymentStatu{{bankItem.Id}}" class="onoffswitch-label">
+                                                            <span class="onoffswitch-inner"></span>
+                                                            <span class="onoffswitch-switch"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="onoffswitch primary inline-block medium">
+                                                        <input type="checkbox" id="rbPaymentMainPos{{bankItem.Id}}" name="rbPaymentMainPosName" ng-checked="bankItem.MainPos" ng-disabled="bankItem.MainPos || !bankItem.Active" ng-model="bankItem.MainPos" ng-change="changeSwitch(bankItem)" class="onoffswitch-checkbox" />
+                                                        <label for="rbPaymentMainPos{{bankItem.Id}}" class="onoffswitch-label">
+                                                            <span class="onoffswitch-inner"></span>
+                                                            <span class="onoffswitch-switch"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="onoffswitch lightred inline-block medium">
+                                                        <input type="checkbox" id="rbPaymentOneShotBank{{bankItem.Id}}" name="rbPaymentOneShotBankName" ng-checked="bankItem.OneShotBank" ng-disabled="!bankItem.Active" ng-model="bankItem.OneShotBank" ng-change="changeSwitch(bankItem)" class="onoffswitch-checkbox" />
+                                                        <label for="rbPaymentOneShotBank{{bankItem.Id}}" class="onoffswitch-label">
+                                                            <span class="onoffswitch-inner"></span>
+                                                            <span class="onoffswitch-switch"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="onoffswitch drank inline-block medium">
+                                                        <input type="checkbox" id="cbPaymentOneShotBankCancel{{bankItem.Id}}" name="cbPaymentOneShotBankCancelName" ng-checked="bankItem.OneShotBankCancel" ng-model="bankItem.OneShotBankCancel" ng-change="changeSwitch(bankItem)" class="onoffswitch-checkbox" />
+                                                        <label for="cbPaymentOneShotBankCancel{{bankItem.Id}}" class="onoffswitch-label">
+                                                            <span class="onoffswitch-inner"></span>
+                                                            <span class="onoffswitch-switch"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="p-5 m-0">
+                                                        <a href="/Admin/AdminPayment/Detail/{{bankItem.Id}}" target="_blank" class="p-5 m-0 text-center">
+                                                            <i class="fa fa-external-link fa-lg"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="p-5 m-0 text-center item-handle">
+                                                        <span class="fa fa-arrows fa-lg"></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <br />
+
+                                <textarea id="nestableExample" class="form-control"></textarea>
+                                @*Textarea silinecek, test için kullanılmakta*@
+                            </div>
+
+                            <br />
+
+                            <hr class="m-0" />
+
+                            <br />
+
+                            <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 no-select">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-3">
+                                        <div class="row">
+                                            <div class="col-xs-3 col-sm-4 text-center">
+                                                <div class="onoffswitch greensea inline-block medium">
+                                                    <input type="checkbox" id="cbPaymentStatuInfo" name="cbPaymentStatuInfoName" checked="checked" disabled="disabled" class="onoffswitch-checkbox" />
+                                                    <label for="cbPaymentStatuInfo" class="onoffswitch-label cursor-default">
+                                                        <span class="onoffswitch-inner"></span>
+                                                        <span class="onoffswitch-switch"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-9 col-sm-8 text-left">
+                                                <label for="cbPaymentStatuInfo">Durumu</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-3">
+                                        <div class="row">
+                                            <div class="col-xs-3 col-sm-4 text-center">
+                                                <div class="onoffswitch primary inline-block medium">
+                                                    <input type="radio" id="rbPaymentMainPosInfo" name="rbPaymentMainPosInfoName" checked="checked" disabled="disabled" class="onoffswitch-checkbox" />
+                                                    <label for="rbPaymentMainPosInfo" class="onoffswitch-label cursor-default">
+                                                        <span class="onoffswitch-inner"></span>
+                                                        <span class="onoffswitch-switch"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-9 col-sm-8 text-left">
+                                                <label for="rbPaymentMainPosInfo">Ana Pos</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-3">
+                                        <div class="row">
+                                            <div class="col-xs-3 col-sm-4 text-center">
+                                                <div class="onoffswitch lightred inline-block medium">
+                                                    <input type="radio" id="rbPaymentOneShotBankInfo" name="rbPaymentOneShotBankInfoName" checked="checked" disabled="disabled" class="onoffswitch-checkbox" />
+                                                    <label for="rbPaymentOneShotBankInfo" class="onoffswitch-label cursor-default">
+                                                        <span class="onoffswitch-inner"></span>
+                                                        <span class="onoffswitch-switch"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-9 col-sm-8 text-left">
+                                                <label for="rbPaymentOneShotBankInfo">Tek Çekim</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-3">
+                                        <div class="row">
+                                            <div class="col-xs-3 col-sm-4 text-center">
+                                                <div class="onoffswitch drank inline-block medium">
+                                                    <input type="checkbox" id="cbPaymentOneShotBankCancelInfo" name="cbPaymentOneShotBankCancelInfoName" checked="checked" disabled="disabled" class="onoffswitch-checkbox" />
+                                                    <label for="cbPaymentOneShotBankCancelInfo" class="onoffswitch-label cursor-default">
+                                                        <span class="onoffswitch-inner"></span>
+                                                        <span class="onoffswitch-switch"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-9 col-sm-8 text-left">
+                                                <label for="cbPaymentOneShotBankCancelInfo">Tüm Tek Çekimler Yönlenmesi İptal</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /tile body -->
+                </section>
+                <!-- /tile -->
+                <!-- /col -->
+            </div>
+            <!-- /row -->
+        </div>
+    </div>
+</div>
+
+@section cScriptLibrary{
+    @Scripts.Render("~/Scripts/Admin/vendor/nestable/jquery.nestable.js")
+}
+
+@section cScriptCode{
+    <script src="@Url.ContentVersioned("/Scripts/Admin/payment.js", HttpContext.Current.Request)"></script>
+    <script type="text/javascript">
+        //var updateOutput = function (e) {
+        //    var list = e.length ? e : $(e.target),
+        //        output = list.data('output');
+            
+        //};
+
+        //$(window).load(function () {
+        //    $('#tBodyPaymentList').nestable({
+        //        listNodeName: 'tbody', //'ol', //tbody
+        //        itemNodeName: 'tr', //'li' //tr
+        //        rootClass: 'table-responsive', //'list-group-wrapper', //'dd', //table-class
+        //        listClass: 'tbody-class', //'list-group', //'dd-list', //tbody-class
+        //        itemClass: 'tr-class', //'list-group-item', //'dd-item',  //tr-class
+        //        dragClass: 'dd-dragel', //'dd-dragel'
+        //        handleClass: 'item-handle', //'dd-handle',
+        //        collapsedClass: 'dd-collapsed', //'dd-collapsed'
+        //        placeClass: 'dd-placeholder', //'dd-placeholder'
+        //        noDragClass: 'dd-nodrag', //'dd-nodrag'
+        //        emptyClass: 'dd-empty', //'dd-empty'
+        //        expandBtnHTML: '', //'<button data-action="expand" type="button">Expand</button>',
+        //        collapseBtnHTML: '', //'<button data-action="collapse" type="button">Collapse</button>',
+        //        group: 0, //0
+        //        maxDepth: 1, //5
+        //        threshold: 20  //20
+        //    }).on('change', updateOutput);
+
+        //    // output initial serialised data
+        //    updateOutput($('#tBodyPaymentList').data('output', $('#nestableExample')));
+        //});
+    </script>
+}

@@ -35,8 +35,34 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- iziToast -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css" integrity="sha512-DIW4FkYTOxjCqRt7oS9BFO+nVOwDL4bzukDyDtMO7crjUZhwpyrWBFroq+IqRe6VnJkTpRAS6nhDvf0w+wHmxg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css" integrity="sha512-O03ntXoVqaGUTAeAmvQ2YSzkCvclZEcPQu1eqloPaHfJ5RuNGiS4l+3duaidD801P50J28EHyonCV06CUlTSag==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.js" integrity="sha512-OmBbzhZ6lgh87tQFDVBHtwfi6MS9raGmNvUNTjDIBb/cgv707v9OuBVpsN6tVVTLOehRFns+o14Nd0/If0lE/A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="todo.js"></script>
+    <link href="~/Scripts/angular.js" rel="stylesheet">
+    <link href="~/Scripts/angular-mocks.js" rel="stylesheet">
+    <link href="~/Scripts/angular-sanitize.js" rel="stylesheet">
+    <link href="~/Scripts/angular-resource.min.js" rel="stylesheet">
+    <link href="~/Scripts/jquery.unobtrusive-ajax.js" rel="stylesheet">
+    <link href="~/Scripts/jquery.unobtrusive-ajax.min.js" rel="stylesheet">
+    <link href="~/Scripts/jquery.validate-vsdoc.js" rel="stylesheet">
+    <link href="~/Scripts/jquery.validate.js" rel="stylesheet">
+    <link href="~/Scripts/jquery.validate.min.js" rel="stylesheet">
+
+
+
+
+    @RenderSection("cStyleCode", required: false)
+    @RenderSection("cStyleLibrary", required: false)
 </head>
-<body class="dashboard dashboard_1">
+<body class="dashboard dashboard_1" ng-app="AdminLayoutApp" ng-cloak>
     <div class="full_container">
         <div class="inner_container">
             <!-- Sidebar  -->
@@ -61,7 +87,7 @@
                 <div class="sidebar_blog_2">
                     <h4>General</h4>
                     <ul class="list-unstyled components">
-                        <li><a href="#"><i class="fa fa-dashboard yellow_color"></i> <span>Dashboard</span></a></li>                       
+                        <li><a href="#"><i class="fa fa-dashboard yellow_color"></i> <span>Dashboard</span></a></li>
                         <li class="active">
                             <a href="#sanalpos" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-credit-card blue2_color"></i> <span>Sanal Pos</span></a>
                             <ul class="collapse list-unstyled" id="sanalpos">
@@ -174,7 +200,7 @@
                     <div class="container-fluid">
                         <div class="footer">
                             <p>
-                                Copyright © <span id="currentYear"></span> All Rights Reserved | MUM Software<br><br>                              
+                                Copyright © <span id="currentYear"></span> All Rights Reserved | MUM Software<br><br>
                             </p>
                         </div>
                     </div>
@@ -211,5 +237,8 @@
     <!-- custom js -->
     <script src="~/Scripts/Admin/custom.js"></script>
     <script src="~/Scripts/Admin/chart_custom_style1.js"></script>
+    @RenderSection("cScriptCode", required: false)
+    @RenderSection("cModals", required: false)
+    @RenderSection("cScriptLibrary", required: false)
 </body>
 </html>

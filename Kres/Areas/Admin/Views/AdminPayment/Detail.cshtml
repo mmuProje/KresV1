@@ -1,0 +1,370 @@
+﻿@using System.Web
+@using Kres.Models.Helper
+@{
+    ViewBag.Title = "Sanal Pos Detayı";
+}
+
+@section cStyleLibrary{}
+
+@section cStyleCode{}
+
+<div class="page page-payment-detail" ng-controller="paymentDetailController">
+    <div class="pageheader">
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    <a href="/Admin"><i class="fa fa-home"></i> Eryaz</a>
+                </li>
+                <li>
+                    <a href="/Admin/Payment/Detail">Detay</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- page content -->
+    <div class="pagecontent">
+        <div class="row">
+            <!-- col -->
+            <div class="col-sm-12">
+                <!-- tile -->
+                <section class="tile">
+                    <!-- tile header -->
+                    <div class="tile-header bg-blue dvd dvd-btm">
+                        <h1 class="custom-font"><strong>Sanal Pos </strong>Listesi</h1>
+                    </div>
+                    <!-- /tile header -->
+                    <!-- tile body -->
+                    <div class="tile-body p-10">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-horizontal">
+                                    
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="panel panel-default panel-filled">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title">Mağaza Bilgileri</h3>
+                                                </div>
+
+                                                <div class="panel-body p-10">
+                                                    <div class="form-group mb-5" ng-if="checkVisible(1)">
+                                                        <label for="iPaymentStoreNo" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">Mağaza Numarası</label>
+                                                        <div class="col-xs-12 col-sm-12 col-md-7">
+                                                            <input id="iPaymentStoreNo" type="text" placeholder="Mağaza Numarası" class="form-control" ng-model="posBankDetailItem.StoreNumber" value="{{posBankDetailItem.StoreNumber}}" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group mb-5" ng-if="checkVisible(2)">
+                                                        <label for="iPaymentApiUser" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">Api Kullanıcısı</label>
+                                                        <div class="col-xs-12 col-sm-12 col-md-7">
+                                                            <input id="iPaymentApiUser" type="text" placeholder="Api Kullanıcısı" class="form-control" ng-model="posBankDetailItem.ApiUser" value="{{posBankDetailItem.ApiUser}}" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group mb-5" ng-if="checkVisible(3)">
+                                                        <label for="iPaymentPosnetId" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">PosnetId</label>
+                                                        <div class="col-xs-12 col-sm-12 col-md-7">
+                                                            <input id="iPaymentPosnetId" type="text" placeholder="PosnetId" class="form-control" ng-model="posBankDetailItem.PosnetId" value="{{posBankDetailItem.PosnetId}}" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group mb-5" ng-if="checkVisible(4)">
+                                                        <label for="iPaymentPosNo" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">Pos No</label>
+                                                        <div class="col-xs-12 col-sm-12 col-md-7">
+                                                            <input id="iPaymentPosNo" type="text" placeholder="Pos No" class="form-control" ng-model="posBankDetailItem.TerminalNo" value="{{posBankDetailItem.TerminalNo}}" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group mb-5" ng-if="checkVisible(5)">
+                                                        <label for="iPaymentUserName" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">Kullanıcı Adı</label>
+                                                        <div class="col-xs-12 col-sm-12 col-md-7">
+                                                            <input id="iPaymentUserName" type="text" placeholder="Kullanıcı Adı" class="form-control" ng-model="posBankDetailItem.ApiUser" value="{{posBankDetailItem.ApiUser}}" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group mb-5" ng-if="checkVisible(6)">
+                                                        <label for="iPaymentPassword" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">Şifre</label>
+                                                        <div class="col-xs-12 col-sm-12 col-md-7">
+                                                            <input id="iPaymentPassword" type="text" placeholder="Şifre" class="form-control" ng-model="posBankDetailItem.Password" value="{{posBankDetailItem.Password}}" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group mb-5" ng-if="checkVisible(7)">
+                                                        <label for="iPaymentPassword" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">Provaut Şifresi</label>
+                                                        <div class="col-xs-12 col-sm-12 col-md-7">
+                                                            <input id="iPaymentPassword" type="text" placeholder="Provaut Şifresi" class="form-control" ng-model="posBankDetailItem.ProvautPassword" value="{{posBankDetailItem.ProvautPassword}}" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group mb-5" ng-if="checkVisible(8)">
+                                                        <label for="iPaymentEncKey" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">ENC Key</label>
+                                                        <div class="col-xs-12 col-sm-12 col-md-7">
+                                                            <input id="iPaymentEncKey" type="text" placeholder="ENC Key" class="form-control" ng-model="posBankDetailItem._3dSecureKey" value="{{posBankDetailItem._3dSecureKey}}" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group mb-5" ng-if="checkVisible(9)">
+                                                        <label for="iPaymentOrganizationNo" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">Organizasyon No</label>
+                                                        <div class="col-xs-12 col-sm-12 col-md-7">
+                                                            <input id="iPaymentOrganizationNo" type="text" placeholder="Organizasyon No" ng-model="posBankDetailItem.ApiUser" class="form-control" value="{{posBankDetailItem.ApiUser}}" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group mb-5" ng-if="checkVisible(10)">
+                                                        <label for="iPaymentBusinessNo" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">İşyeri No</label>
+                                                        <div class="col-xs-12 col-sm-12 col-md-7">
+                                                            <input id="iPaymentBusinessNo" type="text" placeholder="İşyeri No" class="form-control" ng-model="posBankDetailItem.StoreNumber" value="{{posBankDetailItem.StoreNumber}}" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group mb-5" ng-if="checkVisible(11)">
+                                                        <label for="iPaymentTerminalNo" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">Terminal No</label>
+                                                        <div class="col-xs-12 col-sm-12 col-md-7">
+                                                            <input id="iPaymentTerminalNo" type="text" placeholder="Terminal No" class="form-control" ng-model="posBankDetailItem.TerminalNo" value="{{posBankDetailItem.TerminalNo}}" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group mb-5" ng-if="checkVisible(12)">
+                                                        <label for="iPaymentBusinessKey" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">İşyeri Anahtarı</label>
+                                                        <div class="col-xs-12 col-sm-12 col-md-7">
+                                                            <div class="input-group">
+                                                                <input id="iPaymentBusinessKey" type="text" placeholder="İşyeri Anahtarı" class="form-control" ng-model="posBankDetailItem._3dSecureKey" value="{{posBankDetailItem._3dSecureKey}}" />
+                                                                <label for="iPaymentBusinessKey" class="input-group-addon">
+                                                                    <span data-toggle="tooltip" data-placement="bottom" title="Buraya bilgi cümleleri eklenmeli." class="badge bg-info"><i class="fa fa-info"></i></span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group mb-5" ng-if="checkVisible(14)">
+                                                        <label for="iPayment3dSecureKey" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">3D İşyeri Anahtarı</label>
+                                                        <div class="col-xs-12 col-sm-12 col-md-7">
+                                                            <input id="iPayment3dSecureKey" type="text" placeholder="3D İşyeri Anahtarı" class="form-control" ng-model="posBankDetailItem._3dSecureKey" value="{{posBankDetailItem._3dSecureKey}}" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group mb-5" ng-if="checkVisible(15)">
+                                                        <label for="iPayment3dSecureType" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">3D Secure Tipi / Yönetimi</label>
+                                                        <div class="col-xs-12 col-sm-12 col-md-7">
+                                                            <div class="input-group">
+                                                                <select id="iPayment3dSecureType" class="form-control" style="width: 100%;"></select>
+                                                                <label for="iPayment3dSecureType" class="input-group-addon">
+                                                                    <span data-toggle="tooltip" data-placement="bottom" title="Buraya bilgi cümleleri eklenmeli." class="badge bg-info"><i class="fa fa-info"></i></span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group mb-5" ng-if="checkVisible(17)">
+                                                        <label for="iPaymentMinimumInstallmentAmountTL" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">Minimum Taksit Tutarı</label>
+                                                        <div class="col-xs-12 col-sm-12 col-md-7">
+                                                            <input id="iPaymentMinimumInstallmentAmountTL" type="text" placeholder="Minimum Taksit Tutarı" ng-model="posBankDetailItem.MinimumInstallmentPrice" value="{{posBankDetailItem.MinimumInstallmentPrice}}" class="form-control eryaz-numeric-input" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="panel panel-default panel-filled">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title">Sanalpos Çalışma Şekli</h3>
+                                                </div>
+
+                                                <div class="panel-body p-10">
+                                                    <div class="form-group mb-5" ng-if="checkVisible(13)">
+                                                        <label for="iPayment2" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">3D Kullanımı</label>
+                                                        <div class="col-xs-12 col-sm-12 col-md-7">
+                                                            <select id="iPayment2" class="form-control" style="width: 100%;" ng-model="posBankDetailItem._3dSecureSelectionInt" ng-options="item._3dSecureSelectionInt as item.Text for item in _3dOptions"></select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group mb-5" ng-if="checkVisible(16)">
+                                                        <label for="iPayment3" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">Bonus Kullanılabilir</label>
+                                                        <div class="col-xs-12 col-sm-12 col-md-7">
+                                                            <label class="checkbox checkbox-custom-alt">
+                                                                <input id="iPayment3" type="checkbox" ng-checked="posBankDetailItem.UseBonus" ng-model="posBankDetailItem.UseBonus" /><i></i>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="panel panel-default panel-filled">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title">* {{posBankDetailItem.PosBankName}} sanalposunuzdan aşağıdaki banka kartları geçecektir</h3>
+                                                </div>
+
+                                                <div class="table-responsive">
+                                                    <table class="table table-condensed table-hover table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Banka İsmi</th>
+                                                                <th>Kredi Kartı</th>
+                                                                <th>Taksit</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="tbody-class">
+                                                            <tr data-id="{{posOfItem.Id}}" data-ab="{{posOfItem.Id}}" class="tr-class" ng-repeat="posOfItem in posOfBankList">
+                                                                <td>{{posOfItem.Banks.BankName}}</td>
+                                                                <td>{{posOfItem.Banks.Type}}</td>
+                                                                <td class="text-center">
+                                                                    <div class="onoffswitch greensea inline-block medium">
+                                                                        <input type="checkbox" id="cbPaymentStatu{{posOfItem.Id}}" name="cbPaymentStatuName" ng-checked="posOfItem.InstallmentUse" ng-model="posOfItem.InstallmentUse" ng-change="changeSwitch(posOfItem)" class="onoffswitch-checkbox" />
+                                                                        <label for="cbPaymentStatu{{posOfItem.Id}}" class="onoffswitch-label">
+                                                                            <span class="onoffswitch-inner"></span>
+                                                                            <span class="onoffswitch-switch"></span>
+                                                                        </label>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="panel panel-default panel-filled">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title">Taksit Bilgileri</h3>
+                                                </div>
+
+                                                <div class="panel-body p-10">
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="alert alert-info mb-10">
+                                                                <strong>Bilgi!</strong> Buradaki oranlar (%) yüzde cinsinden yazılacaktır.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-xs-12 form-group-sm">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-condensed table-hover table-striped">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th></th>
+                                                                            <th>Taksit</th>
+                                                                            <th>Ekstra</th>
+                                                                            <th>Erteleme</th>
+                                                                            <th>Komisyon</th>
+                                                                            <th>Vade Günü</th>
+                                                                            <th>Not</th>
+                                                                            <th>Ana Tak. Tutarı</th>
+                                                                            <th>Ekstra Taksit Tutarı</th>
+                                                                            <th>Mikro Komisyon Oranı</th>
+                                                                            <th>Mikro Valor Kodu</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody class="tbody-class">
+
+                                                                        <tr data-id="{{row.Installment}}" data-ab="{{row.Installment}}" class="tr-class" ng-repeat="row in  posInstallment" on-finish-render="ngRepeatPosInstallmentFinished">
+                                                                            <td>
+                                                                                <label class="checkbox checkbox-custom-alt m-0 pt-0">
+                                                                                    <input id="iProductNewProduct" type="checkbox" ng-model="row.Checked" ng-checked="row.Checked"><i></i>
+                                                                                </label>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="input-group">
+                                                                                    <label for="iPaymentInstallment01" class="input-group-addon">{{row.Installment}}</label>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="input-group">
+                                                                                    <input id="iPaymentInstallment01" type="text" placeholder="0" ng-model="row.ExtraInstallment" value="{{row.ExtraInstallment}}" class="form-control text-center eryaz-numeric-input-onlynumber" />
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="input-group">
+                                                                                    <input id="iPaymentInstallment01" type="text" placeholder="0" ng-model="row.DeferalInstallment" value="{{row.DeferalInstallment}}" class="form-control text-center eryaz-numeric-input-onlynumber" />
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="input-group">
+                                                                                    <input id="iPaymentInstallment01" type="text" placeholder="0,00" ng-model="row.CommissionRate" value="{{row.CommissionRate}}" class="form-control text-center eryaz-numeric-input" />
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="input-group">
+                                                                                    <input id="iPaymentInstallment01" type="text" placeholder="Vade Günü" ng-model="row.DueDay" value="{{row.DueDay}}" class="form-control text-left" />
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="input-group">
+                                                                                    <input id="iPaymentInstallment01" type="text" placeholder="Not" ng-model="row.Note" value="{{row.Note}}" class="form-control text-left" />
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="input-group">
+                                                                                    <input id="iPaymentInstallment01" type="text" placeholder="0,00" ng-model="row.MainInstallmentAmount" value="{{row.MainInstallmentAmount}}" class="form-control text-center eryaz-numeric-input" />
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="input-group">
+                                                                                    <input id="iPaymentInstallment01" type="text" placeholder="0,00" ng-model="row.ExtraInstallmentAmount" value="{{row.ExtraInstallmentAmount}}" class="form-control text-center eryaz-numeric-input" />
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="input-group">
+                                                                                    <input id="iPaymentInstallment01" type="text" placeholder="0,00" ng-model="row.MikroCommissionRate" value="{{row.MikroCommissionRate}}" class="form-control text-center eryaz-numeric-input" />
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="input-group">
+                                                                                    <input id="iPaymentInstallment01" type="text" placeholder="0,00" ng-model="row.MikroValorCode" value="{{row.MikroValorCode}}" class="form-control text-center" />
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="alert alert-info mb-0">
+                                                                <strong>Bilgi!</strong> Ondalık için (,) virgül kullanınız, (.) nokta kullanmayınız.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /tile body -->
+                    <!-- tile footer -->
+                    <div class="tile-footer dvd dvd-top">
+                        <div class="row">
+                            <div class="col-sm-8 col-sm-offset-2 text-center">
+                                <div class="btn-group btn-group-rounded btn-group-lg">
+                                    <button class="btn btn-danger btn-rounded btn-ef btn-ef-5 btn-ef-5a"><i class="fa fa-close"></i> <span>İptal</span></button>
+                                    <button class="btn btn-primary btn-rounded btn-ef btn-ef-5 btn-ef-5a" ng-click="saveDetailItem()"><i class="fa fa-floppy-o"></i> <span>Kaydet</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /tile footer -->
+                </section>
+                <!-- /tile -->
+                <!-- /col -->
+            </div>
+            <!-- /row -->
+        </div>
+    </div>
+</div>
+
+@section cScriptLibrary{}
+
+@section cScriptCode{
+
+
+    <script src="@Url.ContentVersioned("/Scripts/Admin/paymentDetail.js", HttpContext.Current.Request)"></script>
+
+}
