@@ -1,45 +1,84 @@
-﻿
+﻿@using System.Collections.Generic
+@using System.Web
+@using Kres.Models.EntityLayer
+@using Kres.Models.Helper
 @{
     Layout = null;
 }
-<link href="/Scripts/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-<link href="/Scripts/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
-<link href="~/Content/css/login.css" rel="stylesheet" />
-<div class="container">
-    <div class="screen">
-        <div class="screen__content">
-            <form class="login">
-                <div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" data-kt-menu-flip="bottom">
-                    <img src="~/Scripts/assets/media/avatars/blank.png" alt="metronic" />
-                </div>
+<!DOCTYPE html>
+<!
+<html>
+<head>
+    <title>@*@{ FooterInformation FooterInformationItem = (FooterInformation)HttpContext.Current.Session["FooterInformationItem"]; } @FooterInformationItem.Title*@</title>
+    <link href="/Scripts/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="/Scripts/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/login.css" rel="stylesheet" />
 
-                <div class="login__field">
-                    <i class="login__icon fas fa-user"></i>
-                    <input type="text" class="login__input" placeholder="User name / Email">
+    <!-- iziToast -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css" integrity="sha512-DIW4FkYTOxjCqRt7oS9BFO+nVOwDL4bzukDyDtMO7crjUZhwpyrWBFroq+IqRe6VnJkTpRAS6nhDvf0w+wHmxg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css" integrity="sha512-O03ntXoVqaGUTAeAmvQ2YSzkCvclZEcPQu1eqloPaHfJ5RuNGiS4l+3duaidD801P50J28EHyonCV06CUlTSag==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.js" integrity="sha512-OmBbzhZ6lgh87tQFDVBHtwfi6MS9raGmNvUNTjDIBb/cgv707v9OuBVpsN6tVVTLOehRFns+o14Nd0/If0lE/A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="todo.js"></script>
+    <link href="~/Scripts/angular.js" rel="stylesheet">
+    <link href="~/Scripts/angular-mocks.js" rel="stylesheet">
+    <link href="~/Scripts/angular-sanitize.js" rel="stylesheet">
+    <link href="~/Scripts/angular-resource.min.js" rel="stylesheet">
+    <link href="~/Scripts/jquery.unobtrusive-ajax.js" rel="stylesheet">
+    <link href="~/Scripts/jquery.unobtrusive-ajax.min.js" rel="stylesheet">
+    <link href="~/Scripts/jquery.validate-vsdoc.js" rel="stylesheet">
+    <link href="~/Scripts/jquery.validate.js" rel="stylesheet">
+    <link href="~/Scripts/jquery.validate.min.js" rel="stylesheet">
+
+</head>
+<body ng-app="LoginApp" ng-cloak>
+    <section ng-controller="LoginController">
+        <div class="container">
+            <div class="screen">
+                <div class="screen__content">
+                    <form class="login">
+                        <div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" data-kt-menu-flip="bottom">
+                            <img src="~/Scripts/assets/media/avatars/blank.png" alt="metronic" />
+                        </div>
+
+                        <div class="login__field">
+                            <i class="login__icon fas fa-user"></i>
+                            <input type="text" id="usercode" class="login__input" placeholder="User name / Email">
+                        </div>
+                        <div class="login__field">
+                            <i class="login__icon fas fa-lock"></i>
+                            <input type="password" id="password" class="login__input" placeholder="Password">
+                        </div>
+                        <a href="#" ng-click="login()" class="button login__submit">
+                            <span class="button__text">Log In Now</span>
+                            <i class="button__icon fas fa-chevron-right"></i>
+                        </a>
+                    </form>
+                    <div class="social-login">
+                        <h3>log in via</h3>
+                        <div class="social-icons">
+                            <a href="#" class="social-login__icon fab fa-instagram"></a>
+                            <a href="#" class="social-login__icon fab fa-facebook"></a>
+                            <a href="#" class="social-login__icon fab fa-twitter"></a>
+                        </div>
+                    </div>
                 </div>
-                <div class="login__field">
-                    <i class="login__icon fas fa-lock"></i>
-                    <input type="password" class="login__input" placeholder="Password">
-                </div>
-                <button class="button login__submit">
-                    <span class="button__text">Log In Now</span>
-                    <i class="button__icon fas fa-chevron-right"></i>
-                </button>
-            </form>
-            <div class="social-login">
-                <h3>log in via</h3>
-                <div class="social-icons">
-                    <a href="#" class="social-login__icon fab fa-instagram"></a>
-                    <a href="#" class="social-login__icon fab fa-facebook"></a>
-                    <a href="#" class="social-login__icon fab fa-twitter"></a>
+                <div class="screen__background">
+                    <span class="screen__background__shape screen__background__shape4"></span>
+                    <span class="screen__background__shape screen__background__shape3"></span>
+                    <span class="screen__background__shape screen__background__shape2"></span>
+                    <span class="screen__background__shape screen__background__shape1"></span>
                 </div>
             </div>
         </div>
-        <div class="screen__background">
-            <span class="screen__background__shape screen__background__shape4"></span>
-            <span class="screen__background__shape screen__background__shape3"></span>
-            <span class="screen__background__shape screen__background__shape2"></span>
-            <span class="screen__background__shape screen__background__shape1"></span>
-        </div>
-    </div>
-</div>
+    </section>
+</body>
+</html>
+
+<script src="@Url.ContentVersioned("/Scripts/Pages/login.js", HttpContext.Current.Request)"></script>
+

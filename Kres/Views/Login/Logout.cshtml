@@ -1,0 +1,17 @@
+﻿@using Kres.Models.EntityLayer
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@{ FooterInformation FooterInformationItem = (FooterInformation)HttpContext.Current.Session["FooterInformationItem"]; } @FooterInformationItem.Title</title>
+</head>
+<body>
+    <div>
+    </div>
+</body>
+</html>

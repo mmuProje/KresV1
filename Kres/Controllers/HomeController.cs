@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Kres.Controllers
 {
+    [Authorize]
     public class HomeController : BaseController
     {
         public ActionResult Index()

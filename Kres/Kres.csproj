@@ -180,6 +180,7 @@
     <Compile Include="Models\EntityLayer\FooterInformation.cs" />
     <Compile Include="Models\EntityLayer\Language.cs" />
     <Compile Include="Models\EntityLayer\LocaleStringResource.cs" />
+    <Compile Include="Models\EntityLayer\Logon.cs" />
     <Compile Include="Models\EntityLayer\PaymentContract.cs" />
     <Compile Include="Models\EntityLayer\PaymentControlDenizBankTemp.cs" />
     <Compile Include="Models\EntityLayer\PaymentValue.cs" />
@@ -194,6 +195,7 @@
     <Compile Include="Models\EntityLayer\Teacher.cs" />
     <Compile Include="Models\EntityLayer\TeacherOfStudent.cs" />
     <Compile Include="Models\Helper\BaseController.cs" />
+    <Compile Include="Models\Helper\CustomAuthorizeAttribute.cs" />
     <Compile Include="Models\Helper\EmailHelper.cs" />
     <Compile Include="Models\Helper\GlobalSettings.cs" />
     <Compile Include="Models\Helper\JsonSerializer.cs" />
@@ -1912,6 +1914,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Pages\home.js" />
     <Content Include="Scripts\Pages\Layout.js" />
+    <Content Include="Scripts\Pages\login.js" />
     <Content Include="Scripts\sitemap.xml" />
     <Content Include="Scripts\test-bundles\angular-aria.js" />
     <Content Include="Scripts\test-bundles\angular-cookies.js" />
@@ -1935,6 +1938,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Login\Logout.cshtml" />
+    <Content Include="Views\Login\Unauthorized.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

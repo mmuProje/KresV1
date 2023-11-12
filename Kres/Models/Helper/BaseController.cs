@@ -9,7 +9,6 @@ using System.Web.Mvc;
 
 namespace Kres.Models.Helper
 {
-
     public class BaseController : Controller
     {
         #region Sessions
@@ -222,7 +221,7 @@ namespace Kres.Models.Helper
             {
                 if (ControlApp(this.CurrentStudent.Id.ToString(), "Student"))
                 {
-                    this.CurrentStudent = Student.GetById(this.CurrentStudent.Id, this.CurrentStudent.Id);
+                    this.CurrentStudent = Student.GetById(this.CurrentStudent.Id);
                     HttpRuntime.Cache.Remove(this.CurrentStudent.Id.ToString());
                     HttpRuntime.Cache.Remove("StudentGeneralChange");
                 }
