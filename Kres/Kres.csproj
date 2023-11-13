@@ -378,6 +378,8 @@
     <Content Include="Content\fonts\Flaticon.svg" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\login.css" />
+    <Content Include="Content\loginmain.css" />
     <Content Include="dist\account\overview.html" />
     <Content Include="images\Homeicon\checklist.png" />
     <Content Include="images\Homeicon\credit-card.png" />
@@ -387,6 +389,7 @@
     <Content Include="images\Homeicon\syllabus.png" />
     <Content Include="images\Homeicon\teacher-message.png" />
     <Content Include="images\Homeicon\teacher.png" />
+    <Content Include="images\loginimg.jpg" />
     <Content Include="images\logo.png" />
     <Content Include="images\Homeicon\resume.png" />
     <Content Include="obj\Debug\Kres.csproj.FileListAbsolute.txt" />
@@ -2028,6 +2031,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\login.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Pages\home.js" />
