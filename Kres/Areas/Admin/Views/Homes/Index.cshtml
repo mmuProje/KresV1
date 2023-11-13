@@ -1,8 +1,16 @@
-﻿
+﻿@using System.Web
+@using Kres.Models.Helper
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
 }
 
-<h2>admin panel</h2>
+<section ng-controller="HomesController">
+    <h2>admin panel</h2>
+</section>
+
+
+
+
+<script src="@Url.ContentVersioned("/Scripts/Admin/homes.js", HttpContext.Current.Request)"></script>
 

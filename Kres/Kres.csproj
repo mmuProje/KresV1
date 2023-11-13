@@ -365,6 +365,7 @@
     <Content Include="Scripts\Admin\chart_custom_style2.js" />
     <Content Include="Scripts\Admin\custom.js" />
     <Content Include="Scripts\Admin\custom_chart.js" />
+    <Content Include="Scripts\Admin\homes.js" />
     <Content Include="Scripts\Admin\jquery-3.3.1.min.js" />
     <Content Include="Scripts\Admin\jquery.fancybox.js" />
     <Content Include="Scripts\Admin\jquery.fancybox.min.js" />
