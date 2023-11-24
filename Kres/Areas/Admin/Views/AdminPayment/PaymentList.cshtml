@@ -1,0 +1,402 @@
+﻿@using System.Web
+@using Kres.Models.Helper
+
+@{
+    ViewBag.Title = "Sanal Pos Listesi";
+}
+
+@*Listeleme ekranı olacak. siparişlerde yer alan arama kriterleri hemen hemen geçerli olacak. İşlemler menüsü olacak . detay için modal içerir.*@
+
+
+@section cStyleLibrary{}
+
+@section cStyleCode
+{
+    <style type="text/css">
+        .payment-print {
+            background-color: #007400 !important;
+            color: white !important;
+            font-weight: bold !important;
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+    </style>
+}
+
+<div class="page page-paymnet-list" ng-controller="paymentListController">
+    <div class="pageheader">
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    <a href="/Admin"><i class="fa fa-home"></i> Eryaz</a>
+                </li>
+                <li>
+                    <a href="javascript:;">İşlem Listesi</a>
+                </li>
+                <li>
+                    <a href="javascript:;">Ödeme Listesi</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- #region Page Content -->
+    <div class="pagecontent">
+        <div class="row">
+            <!-- col -->
+            <div class="col-sm-12">
+                <!-- tile -->
+                <section class="tile">
+                    <!-- tile header -->
+                    <div class="tile-header bg-blue dvd dvd-btm">
+                        <h1 class="custom-font"><strong>Ödeme </strong>Listesi</h1>
+                    </div>
+                    <!-- /tile header -->
+                    <!-- tile widget -->
+                    <div class="tile-widget">
+                        <div class="form-horizontal">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="iOrderCode" class="col-xs-12 col-sm-5 col-md-4 control-label text-left hidden-xs hidden-sm">Tarih Aralığı</label>
+                                        <div class="col-xs-12 col-sm-12 col-md-8">
+                                            <div class="input-group">
+                                                <input id="iPaymentStartDate" ng-model="paymentSearchCriteria.StartDate" type="text" placeholder="Başlangıç Tarihi" class="form-control" />
+                                                <span class="input-group-btn" style="width:0;"></span>
+                                                <input id="iPaymentEndDate" type="text" ng-model="paymentSearchCriteria.EndDate" placeholder="Bitiş Tarihi" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="iOrderSearch" class="col-xs-12 col-sm-5 col-md-4 control-label text-left hidden-xs hidden-sm">Genel Arama</label>
+                                        <div class="col-xs-12 col-sm-12 col-md-8">
+                                            <input id="iOrderSearch" type="text" ng-model="paymentSearchCriteria.T9Text" ng-keypress="keypressEventPaymentSearch($event,paymentSearchCriteria)" placeholder="Genel Arama" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="p-0">
+                                                <div class="form-group mb-5">
+                                                    <div class="col-sm-12">
+                                                        <label class="checkbox checkbox-custom-alt">
+                                                            <input id="iOrderStatu0" name="iOrderStatu" ng-model="paymentSearchCriteria.PaymentStatu" ng-change="paymentSearchCriteria.PaymentStatu=0" ng-checked="paymentSearchCriteria.PaymentStatu==0" type="radio"><i></i> Tümü
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group mb-5">
+                                                    <div class="col-sm-12">
+                                                        <label class="checkbox checkbox-custom-alt">
+                                                            <input id="iOrderStatu1" name="iOrderStatu" ng-model="paymentSearchCriteria.PaymentStatu" ng-change="paymentSearchCriteria.PaymentStatu=1" ng-checked="paymentSearchCriteria.PaymentStatu==1" type="radio"><i></i> Başarılı
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group mb-0">
+                                                    <div class="col-sm-12">
+                                                        <label class="checkbox checkbox-custom-alt">
+                                                            <input id="iOrderStatu2" name="iOrderStatu" ng-model="paymentSearchCriteria.PaymentStatu" ng-change="paymentSearchCriteria.PaymentStatu=2" ng-checked="paymentSearchCriteria.PaymentStatu==2" type="radio"><i></i> Başarısız
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="p-0">
+                                                <div class="form-group mb-5">
+                                                    <div class="col-sm-12">
+                                                        <label class="checkbox checkbox-custom-alt">
+                                                            <input id="iOrderStatu3" name="iOrderStatu" ng-model="paymentSearchCriteria.PaymentStatu" ng-change="paymentSearchCriteria.PaymentStatu=3" ng-checked="paymentSearchCriteria.PaymentStatu==3" type="radio"><i></i> Onaylanmış
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group mb-5">
+                                                    <div class="col-sm-12">
+                                                        <label class="checkbox checkbox-custom-alt">
+                                                            <input id="iOrderStatu4" name="iOrderStatu" ng-model="paymentSearchCriteria.PaymentStatu" ng-change="paymentSearchCriteria.PaymentStatu=4" ng-checked="paymentSearchCriteria.PaymentStatu==4" type="radio"><i></i> Onaylanmamış
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group mb-0">
+                                                    <div class="col-sm-12">
+                                                        <label class="checkbox checkbox-custom-alt">
+                                                            <input id="iOrderStatu99" name="iOrderStatu" ng-model="paymentSearchCriteria.PaymentStatu" ng-change="paymentSearchCriteria.PaymentStatu=5" ng-checked="paymentSearchCriteria.PaymentStatu==5" type="radio"><i></i> İptal
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4 text-center">
+                                    <div class="mb-20"></div>
+                                    <div class="btn-group btn-group-rounded btn-group-lg">
+                                        <button class="btn btn-primary btn-rounded btn-ef btn-ef-5 btn-ef-5a" ng-click="paymentSearch(paymentSearchCriteria)"><i class="fa fa-search"></i> <span>Ara</span></button>
+                                        <button class="btn btn-warning btn-rounded btn-ef btn-ef-5 btn-ef-5a" ng-click="paymentSearch(paymentSearchCriteria)"><i class="fa fa-refresh"></i> <span>Yenile</span></button>
+                                        <button class="btn btn-danger btn-rounded btn-ef btn-ef-5 btn-ef-5a" ng-click="clear();"><i class="fa fa-reply"></i> <span>İptal</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /tile widget -->
+
+                    <hr class="m-0" />
+
+                    <!-- tile body -->
+                    <div class="tile-body p-10">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row form-horizontal form-group-sm">
+                                    <div class="col-sm-12">
+                                        <div loading-container="tableOrdersParams.settings().$loading" class="table-responsive">
+                                            <table ng-table="tableOrdersParams" class="table table-condensed table-bordered table-striped" ng-form="tableOrderForm" disable-filter="isAdding" demo-tracked-table="tableTracker">
+                                                <tr ng-repeat="row in $data" ng-form="rowOrderForm" demo-tracked-table-row="row" ng-class="row.PrintStatu ? 'payment-print' : ''">
+                                                    <td title="'Id'" filter="{Id: 'text'}" sortable="'Id'" ng-switch="row.isEditing" ng-class="Id.$dirty ? 'bg-warning text-center' : 'text-center'" ng-form="Id" demo-tracked-table-cell>
+                                                        <span ng-switch-default class="editable-text">{{row.Id}}</span>
+                                                    </td>
+                                                    <td title="'Kod'" filter="{'Student.Code': 'text'}" sortable="'Code'" ng-switch="row.isEditing" ng-class="Student.Code.$dirty ? 'bg-warning text-center' : 'text-center'" ng-form="Student.Code" demo-tracked-table-cell>
+                                                        <span ng-switch-default class="editable-text">{{row.Student.Code}}</span>
+                                                    </td>
+                                                    <td title="'Ad'" filter="{'Student.Name': 'text'}" sortable="'Name'" ng-switch="row.isEditing" ng-class="Student.Name.$dirty ? 'bg-warning text-left' : 'text-left'" ng-form="Student.Name" demo-tracked-table-cell style="max-width: 150px; overflow: hidden;word-spacing: normal;">
+                                                        <span ng-switch-default class="editable-text">{{row.Student.Name}}</span>
+                                                    </td>
+                                                    <td title="'Kullanıcı Adı'" filter="{NameSurname: 'text'}" sortable="'NameSurname'" ng-switch="row.isEditing" ng-class="NameSurname.$dirty ? 'bg-warning text-center' : 'text-center'" ng-form="NameSurname" demo-tracked-table-cell>
+                                                        <span ng-switch-default class="editable-text">{{row.NameSurname}}</span>
+                                                    </td>
+                                                    <td title="'Banka Adı'" filter="{BankName: 'text'}" sortable="'BankName'" ng-switch="row.isEditing" ng-class="BankName.$dirty ? 'bg-warning text-center' : 'text-center'" ng-form="BankName" demo-tracked-table-cell>
+                                                        <span ng-switch-default class="editable-text">{{row.BankName}}</span>
+                                                    </td>
+                                                    <td title="'Kart Numarası'" filter="{CardNumber: 'text'}" sortable="'CardNumber'" ng-switch="row.isEditing" ng-class="CardNumber.$dirty ? 'bg-warning text-center' : 'text-center'" ng-form="CardNumber" demo-tracked-table-cell>
+                                                        <span ng-switch-default class="editable-text" ng-bind-html="row.CardNumber"></span>
+                                                    </td>
+                                                    <td title="'Tutar'" filter="{Amount: 'text'}" sortable="'Total'" ng-switch="row.isEditing" ng-class="Amount.$dirty ? 'bg-warning text-right' : 'text-right'" ng-form="Amount" demo-tracked-table-cell>
+                                                        <span ng-switch-default class="editable-text" ng-bind-html="row.AmountStr"></span>
+                                                    </td>
+                                                    <td title="'Taksit'" filter="{Installment: 'text'}" sortable="'VatStr'" ng-switch="row.isEditing" ng-class="Installment.$dirty ? 'bg-warning text-right' : 'text-right'" ng-form="Installment" demo-tracked-table-cell>
+                                                        <span ng-switch-default class="editable-text" ng-bind-html="row.Installment"></span>
+                                                    </td>
+                                                    <td title="'Provizyon No'" filter="{AuthCode: 'text'}" sortable="'AuthCode'" ng-switch="row.isEditing" ng-class="AuthCode.$dirty ? 'bg-warning text-left' : 'text-left'" ng-form="AuthCode" demo-tracked-table-cell>
+                                                        <span ng-switch-default class="editable-text" ng-bind-html="row.AuthCode"></span>
+                                                    </td>
+                                                    <td title="'Kullanılan Pos'" filter="{UseEPaymentType: 'text'}" sortable="'UseEPaymentType'" ng-switch="row.isEditing" ng-class="UseEPaymentType.$dirty ? 'bg-warning text-left' : 'text-left'" ng-form="UseEPaymentType" demo-tracked-table-cell>
+                                                        <span ng-switch-default class="editable-text" ng-bind-html="row.UseEPaymentType"></span>
+                                                    </td>
+                                                    <td title="'Hata Mesajı'" filter="{Result: 'text'}" sortable="'Result'" ng-switch="row.isEditing" ng-class="Result.$dirty ? 'bg-warning text-left' : 'text-left'" ng-form="Result" demo-tracked-table-cell>
+                                                        <span ng-switch-default class="editable-text" ng-bind-html="row.Result"></span>
+                                                    </td>
+                                                    <td title="'Çekim Tarihi'" filter="{ProcessingDate: 'text'}" sortable="'CreateDate'" ng-switch="row.isEditing" ng-class="ProcessingDate.$dirty ? 'bg-warning text-center' : 'text-center'" ng-form="ProcessingDate" demo-tracked-table-cell>
+                                                        <span ng-switch-default class="editable-text" ng-bind-html="ConvertDate(row.ProcessingDate)"></span>
+                                                    </td>
+
+                                                    <td class="text-center">
+                                                        <div class="btn-group btn-group-xs mb-0">
+                                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                                                <i class="fa fa-gears"></i> <span class="caret"></span>
+                                                            </button>
+
+                                                            <ul role="menu" class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+                                                                <li ng-if="row.EpaymentStatus == 0 && row.ProcReturnCode == '00'" ng-click="updatepaymentStatus(row.Id,98)"><a href="javascript:;"><i class="fa fa-check"></i> Onayla</a></li>
+                                                                <li ng-if="row.EpaymentStatus == 1 && row.ProcReturnCode == '00'" ng-click="updatepaymentStatus(row.Id,0)"><a href="javascript:;"><i class="fa fa-undo"></i> Onaylama</a></li>
+                                                                <li ng-click="tableLinkedShowDetail(row)"><a href="javascript:;"><i class="fa fa-info-circle"></i> Detay</a></li>
+                                                                <li ng-if="row.ProcReturnCode == '00'" ng-click="showPdf(row)"><a href="javascript:;"><i class="fa fa-file-pdf-o"></i> PDF</a></li>
+                                                                <li ng-if="row.ProcReturnCode == '00'" ng-click="askForDelete(row,false,2)"><a href="javascript:;"><i class="fa fa-trash-o"></i> İptal</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /tile body -->
+                </section>
+                <!-- /tile -->
+                <!-- /col -->
+            </div>
+            <!-- /row -->
+        </div>
+
+        <div id="mPaymentDetail" tabindex="-1" role="dialog" aria-labelledby="mBlogCommentLabel" aria-hidden="true" class="modal fade">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form id="mTaskListCommentForm" role="form" method="post" class="form-horizontal form-modal">
+                            <section class="tile widget-chat">
+                                <!-- tile header -->
+                                <div class="tile-header dvd dvd-btm">
+                                    <h1 class="custom-font">Detay</h1>
+                                </div>
+                                <!-- /tile header -->
+                                <!-- tile body -->
+                                <div class="tile-body slim-scroll form-horizontal" style="max-height: 320px; overflow: auto;">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" style="font-weight:bold">IP Adresi </label>
+                                                {{selectedPayment.IpAddress}}
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" style="font-weight:bold">Transfer Id </label>
+                                                {{selectedPayment.TransId}}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" style="font-weight:bold">Sipariş No </label>
+                                                {{selectedPayment.Oid}}
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" style="font-weight:bold">Grup No </label>
+                                                {{selectedPayment.GroupId}}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" style="font-weight:bold">Onay Mesajı </label>
+                                                {{selectedPayment.Appr}}
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" style="font-weight:bold">Hata Mesajı </label>
+                                                {{selectedPayment.ErrMsg}}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" style="font-weight:bold">Sipariş No </label>
+                                                {{selectedPayment.OrderId}}
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" style="font-weight:bold">Ödeme No </label>
+                                                {{selectedPayment.PaymentId}}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" style="font-weight:bold">Kullanılan Pos </label>
+                                                {{selectedPayment.UseEPaymentType}}
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" style="font-weight:bold">Not </label>
+                                                {{selectedPayment.Note}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" style="font-weight:bold">Telefon Numarası </label>
+                                                {{selectedPayment.PhoneNumber}}
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" style="font-weight:bold">3D </label>
+                                                {{selectedPayment._3DSecure}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" style="font-weight:bold">Bonus </label>
+                                                {{selectedPayment.UseBonus}}
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" style="font-weight:bold">İşlem Kodu </label>
+                                                {{selectedPayment.ProcReturnCode}}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" style="font-weight:bold">Toplam Bonus </label>
+                                                {{selectedPayment.StudentTotalBonus}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /tile body -->
+                                <!-- tile footer -->
+                                <div class="tile-footer">
+                                    <div class="tile-body">
+                                        <pre class="prettyprint lang-js">{{selectedPayment.Extra}}</pre>
+                                    </div>
+                                </div>
+                                <!-- /tile footer -->
+                            </section>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="mPdfShow" tabindex="-1" role="dialog" aria-labelledby="mPdfShowLabel" aria-hidden="true" class="modal fade" style="min-height:800px;width:100%">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <iframe style="min-height:600px;width:100%" src="{{frameUrl}}"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- #endregion -->
+</div>
+
+@section cScriptLibrary{}
+
+@section cScriptCode{
+
+
+    <script src="@Url.ContentVersioned("/Scripts/Admin/paymentList.js", HttpContext.Current.Request)"></script>
+
+}
