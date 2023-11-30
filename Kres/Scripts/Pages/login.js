@@ -76,7 +76,7 @@
 
             var Code = $('#usercode').val();
             var Password = $('#password').val();
-            var loginType = '1';
+            var loginType = ($("#iStudent").is(":checked") == true ? '0' : '1');
 
             $http({
                 method: "POST",

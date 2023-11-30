@@ -37,7 +37,7 @@ namespace Kres.Controllers
             MessageBox message = null;
             LoginType CurrentLoginType = new LoginType();
 
-            CurrentLoginType = String.IsNullOrEmpty(loginType)
+            CurrentLoginType = Convert.ToInt16(loginType) == ((int)LoginType.Teacher)
                 ? LoginType.Teacher
                 : LoginType.Student;
 
