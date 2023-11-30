@@ -269,13 +269,13 @@ namespace Kres.Models.Helper
                     GetLocaleStringResource();
 
 
-                if (CurrentLanguage != null && FooterInformationItem == null)
-                {
-                    FooterInformationItem = FooterInformation.GetFooterItem(CurrentLanguage.Id);
-                    ViewBag.FooterInformationItem = FooterInformationItem;
-                }
-                else if (FooterInformationItem != null)
-                    ViewBag.FooterInformationItem = FooterInformationItem;
+                //if (CurrentLanguage != null && FooterInformationItem == null)
+                //{
+                //    FooterInformationItem = FooterInformation.GetFooterItem(CurrentLanguage.Id);
+                //    ViewBag.FooterInformationItem = FooterInformationItem;
+                //}
+                //else if (FooterInformationItem != null)
+                //    ViewBag.FooterInformationItem = FooterInformationItem;
             }
             else
             {
