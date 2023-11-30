@@ -45,6 +45,8 @@
     <link rel="stylesheet" type="text/css" href="~/Content/Admin/vendor/select2/select2.min.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="~/Content/Admin/vendor/daterangepicker/daterangepicker.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <!--===============================================================================================-->
     <link href="~/Content/login.css" rel="stylesheet" />
     <link href="~/Content/loginmain.css" rel="stylesheet" />
@@ -72,7 +74,7 @@
                             Mum Software Hoşgeldiniz
                         </span>
                         <div class="col-md-12">
-                            <div class="middle">                              
+                            <div class="middle">
                                 <label>
                                     <input type="radio" name="radio" checked />
                                     <div class="front-end box">
@@ -86,7 +88,6 @@
                                         <span>Öğretmen</span>
                                     </div>
                                 </label>
-                                <p>Made <span></span> by <a href="https://github.com/gabrielferreiraa" target="_blank"></a></p>
                             </div>
                         </div>
 
@@ -112,7 +113,7 @@
                             </div>
 
                             <div>
-                                <a href="#" class="txt1">
+                                <a class="txt1 cursor-pointer" ng-click="openForgetPasswordModal()">
                                     Şifremi Unuttum
                                 </a>
                             </div>
@@ -120,7 +121,7 @@
 
 
                         <div class="container-login100-form-btn">
-                            <button class="login100-form-btn button login__submit" ng-click="login()">
+                            <button class="login100-form-btn button login__submit btn btn-success" ng-click="login()">
                                 Giriş
                             </button>
                         </div>
@@ -132,11 +133,11 @@
                         </div>
 
                         <div class="login100-form-social flex-c-m">
-                            <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
+                            <a href="#" class="login100-form-social-item flex-c-m m-r-5">
                                 <i class="fa fa-facebook-f" aria-hidden="true"></i>
                             </a>
 
-                            <a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
+                            <a href="#" class="login100-form-social-item flex-c-m m-r-5">
                                 <i class="fa fa-twitter" aria-hidden="true"></i>
                             </a>
                         </div>
@@ -149,7 +150,30 @@
         </div>
 
 
-
+        <div class="modal fade" id="forgetPasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Kapat</span></button>
+                        <h4 class="modal-title" id="modal-header">Şifre Bilgilendirme Maili</h4>
+                    </div><!-- End .modal-header -->
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label class="forgetpassinputlbl">
+                                    CustomerCode Mail
+                                </label>
+                                <input class="forgetpassinput" type="email" id="customerEmail" style="width:100%" />
+                            </div>
+                        </div>
+                    </div><!-- End .modal-body -->
+                    <div id="modal-footer" class="modal-footer">
+                        <button class="btn btn-success" ng-click="resetForgetPasswordMail()">Send</button>
+                        <button id="buttonmodalClose" type="button" class="btn btn-danger" data-dismiss="modal"> Kapat</button>
+                    </div><!-- End .modal-footer -->
+                </div><!-- End .modal-content -->
+            </div><!-- End .modal-dialog -->
+        </div>
 
 
         <!--===============================================================================================-->

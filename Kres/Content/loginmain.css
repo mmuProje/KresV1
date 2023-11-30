@@ -311,13 +311,13 @@ iframe {
     min-height: 100vh;
     display: block;
     background-color: #f7f7f7;
-    padding: 173px 55px 55px 55px;
+    padding: 5% 5%;
 }
 
 .login100-form-title {
     width: 100%;
     display: block;
-    font-family: Poppins-Regular;
+    font-family: ui-monospace;
     font-size: 30px;
     color: #333333;
     line-height: 1.2;
@@ -693,7 +693,7 @@ input.input100 {
     }
 
         .middle input[type="radio"]:checked + .box {
-            background-color: #007e90;
+            background-color: #50cd89;
         }
 
             .middle input[type="radio"]:checked + .box span {
@@ -707,8 +707,8 @@ input.input100 {
                 }
 
     .middle .box {
-        width: 125px;
-        height: 72px;
+        width: 105px;
+        height: 60px;
         background-color: #fff;
         transition: all 250ms ease;
         will-change: transition;
@@ -719,8 +719,10 @@ input.input100 {
         font-family: "Inter", sans-serif;
         font-weight: 900;
         border-radius: 10%;
-    }
-
+        font-size: 10px;
+        margin-top:5%;
+        margin-bottom:5%;
+    }    
     .middle label {
         display: contents !important;
     }

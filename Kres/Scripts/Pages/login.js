@@ -109,6 +109,31 @@
             });
         }
 
+
+        $scope.openForgetPasswordModal = function () {
+        $('#forgetPasswordModal').modal('show');
+    };
+    $scope.resetForgetPasswordMail = function () {
+        var customerEmail = $('#customerEmail').val();
+        $.ajax({
+            type: "POST",
+            url: "/Login/ResetForgetPasswordMail",
+            data: "{customerCodeOrEmail:'" + customerEmail + "'}",
+            contentType: "application/json; charset=utf-8",
+            async: false,
+            success: function (data) {
+                location.reload();
+            }
+        });
+    }
+
+
+    $scope.changeLang = function () {
+        $rootScope.changeLanguage($scope.languageList.find(x => x.Id == $scope.login.LanguageId).UniqueSeoCode);
+    }
+
+
+
         $(document).ready(function () {
 
 
