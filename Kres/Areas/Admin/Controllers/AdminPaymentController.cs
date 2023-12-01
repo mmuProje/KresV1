@@ -85,6 +85,7 @@ namespace Kres.Areas.Admin.Controllers
         public string GetListPayment(PaymentSearchCriteria paymentSearchCriteria)
         {
             paymentSearchCriteria.EndDate = paymentSearchCriteria.EndDate.Date.Add(new TimeSpan(23, 59, 59));
+            paymentSearchCriteria.T9Text = paymentSearchCriteria.T9Text == null ? string.Empty : paymentSearchCriteria.T9Text;
             return JsonConvert.SerializeObject(EPayment.GetListEpayment(paymentSearchCriteria.StartDate, paymentSearchCriteria.EndDate, paymentSearchCriteria.T9Text, paymentSearchCriteria.PaymentStatu));
         }
 

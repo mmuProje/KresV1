@@ -11,7 +11,7 @@ angular.module('AdminLayoutApp', [])
         };
 
         $scope.showPdf = function (item) {
-            fireCustomLoading(true);
+            //fireCustomLoading(true);
             $http({
                 method: "POST",
                 url: "/Admin/AdminPayment/SavePdf",
@@ -22,7 +22,7 @@ angular.module('AdminLayoutApp', [])
 
                 $('#mPdfShow').appendTo("body").modal('show');
 
-                fireCustomLoading(false);
+                //fireCustomLoading(false);
 
             });
         }
@@ -33,11 +33,11 @@ angular.module('AdminLayoutApp', [])
         };
 
         $scope.paymentSearch = function (paymentSearchCriteria) {
-            fireCustomLoading(true);
+            ////fireCustomLoading(true);
             paymentSearchCriteria.StartDate = $('#iPaymentStartDate').val();
             paymentSearchCriteria.EndDate = $('#iPaymentEndDate').val();
 
-            fireCustomLoading(true);
+            ////fireCustomLoading(true);
             $http({
                 method: "POST",
                 url: "/Admin/AdminPayment/GetListPayment",
@@ -46,16 +46,8 @@ angular.module('AdminLayoutApp', [])
 
             }).then(function (response) {
 
-                $scope.tableOrdersParams = new NgTableParams({
-                    count: 15
-                }, {
-                    filterDelay: 0,
-                    counts: [],
-                    dataset: angular.copy(response.data)
-                });
-
-                $scope.tablePaymentOrjinalData = angular.copy(response.data);
-                fireCustomLoading(false);
+                $scope.paymentlist = response.data;
+                //fireCustomLoading(false);
 
             });
         };
@@ -103,7 +95,7 @@ angular.module('AdminLayoutApp', [])
         };
 
         $scope.updatepaymentStatus = function (id, status) {
-            fireCustomLoading(true);
+            //fireCustomLoading(true);
             $http({
                 method: "POST",
                 url: "/Admin/AdminPayment/UpdatePaymentStatus",
@@ -111,7 +103,7 @@ angular.module('AdminLayoutApp', [])
                 data: { id: id, status: status }
 
             }).then(function (response) {
-                fireCustomLoading(false);
+                //fireCustomLoading(false);
                 iziToast.show({
                     message: response.data.Message,
                     position: 'topCenter',
@@ -163,7 +155,7 @@ angular.module('AdminLayoutApp', [])
         }
 
         $(document).ready(function () {
-            setDefaultDate();
+           // setDefaultDate();
         });
     })
 

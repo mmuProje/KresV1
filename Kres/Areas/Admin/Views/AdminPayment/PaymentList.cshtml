@@ -3,6 +3,8 @@
 
 @{
     ViewBag.Title = "Sanal Pos Listesi";
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker3.min.css" rel="stylesheet" />
+
 }
 
 @*Listeleme ekranı olacak. siparişlerde yer alan arama kriterleri hemen hemen geçerli olacak. İşlemler menüsü olacak . detay için modal içerir.*@
@@ -57,10 +59,20 @@
                                     <div class="form-group">
                                         <label for="iOrderCode" class="col-xs-12 col-sm-5 col-md-4 control-label text-left hidden-xs hidden-sm">Tarih Aralığı</label>
                                         <div class="col-xs-12 col-sm-12 col-md-8">
-                                            <div class="input-group">
-                                                <input id="iPaymentStartDate" ng-model="paymentSearchCriteria.StartDate" type="text" placeholder="Başlangıç Tarihi" class="form-control" />
-                                                <span class="input-group-btn" style="width:0;"></span>
-                                                <input id="iPaymentEndDate" type="text" ng-model="paymentSearchCriteria.EndDate" placeholder="Bitiş Tarihi" class="form-control" />
+                                            @*<div class="input-group">
+                                                    <input id="iPaymentStartDate" ng-model="paymentSearchCriteria.StartDate" type="text" placeholder="Başlangıç Tarihi" class="form-control" />
+                                                    <span class="input-group-btn" style="width:0;"></span>
+                                                    <input id="iPaymentEndDate" type="text" ng-model="paymentSearchCriteria.EndDate" placeholder="Bitiş Tarihi" class="form-control" />
+                                                </div>*@
+                                            <div class="form-group row" id="date_5">
+                                                <label class="col-sm-2 col-form-label">Gösterim Tarihi</label>
+                                                <div class="col-sm-10 input-daterange input-group" id="datepicker">
+                                                    <input id="iPaymentStartDate" class="input-sm form-control" type="text" name="start" ng-model="paymentSearchCriteria.StartDate">
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">Gösterim Tarihi</label>
+                                                <div class="col-sm-10 input-daterange input-group" id="datepicker">
+                                                    <input id="iPaymentEndDate" class="input-sm form-control" type="text" name="end" ng-model="paymentSearchCriteria.EndDate">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -155,7 +167,7 @@
                                 <div class="row form-horizontal form-group-sm">
                                     <div class="col-sm-12">
                                         <div loading-container="tableOrdersParams.settings().$loading" class="table-responsive">
-                                            <table ng-table="tableOrdersParams" class="table table-condensed table-bordered table-striped" ng-form="tableOrderForm" disable-filter="isAdding" demo-tracked-table="tableTracker">
+                                            @*<table ng-table="tableOrdersParams" class="table table-condensed table-bordered table-striped" ng-form="tableOrderForm" disable-filter="isAdding" demo-tracked-table="tableTracker">
                                                 <tr ng-repeat="row in $data" ng-form="rowOrderForm" demo-tracked-table-row="row" ng-class="row.PrintStatu ? 'payment-print' : ''">
                                                     <td title="'Id'" filter="{Id: 'text'}" sortable="'Id'" ng-switch="row.isEditing" ng-class="Id.$dirty ? 'bg-warning text-center' : 'text-center'" ng-form="Id" demo-tracked-table-cell>
                                                         <span ng-switch-default class="editable-text">{{row.Id}}</span>
@@ -210,6 +222,18 @@
                                                         </div>
                                                     </td>
                                                 </tr>
+                                            </table>*@
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <td>isim</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="item in paymentlist">
+                                                        <td>{{item.NameSurname}}</td>
+                                                    </tr>
+                                                </tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -390,7 +414,19 @@
 
 @section cScriptCode{
 
-
     <script src="@Url.ContentVersioned("/Scripts/Admin/paymentList.js", HttpContext.Current.Request)"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/locales/bootstrap-datepicker.tr.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#date_5 .input-daterange').datepicker({
+                keyboardNavigation: true,
+                format: 'dd.mm.yyyy',
+                // startDate: '0d',
+                language: 'tr',
+                forceParse: true,
+                autoclose: true
+            });
+        })
+    </script>
 }
