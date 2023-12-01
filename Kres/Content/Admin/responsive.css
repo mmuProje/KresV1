@@ -79,7 +79,8 @@
         display: none;
     }
     #sidebar.active ul li a span {
-        font-size: 13px;
+        font-size: 11px;
+        color:white;
     }
     #sidebar ul li a i {}
 }
