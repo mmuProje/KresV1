@@ -13,11 +13,8 @@
         <div class="page-bar">
             <ul class="page-breadcrumb">
                 <li>
-                    <a href="/Admin"><i class="fa fa-home"></i> Eryaz</a>
-                </li>
-                <li>
-                    <a href="/Admin/Payment/Detail">Detay</a>
-                </li>
+                    <a href="~/Admin/AdminPayment"><i class="fa fa-home"></i> MUM Software</a>
+                </li>              
             </ul>
         </div>
     </div>
@@ -30,7 +27,7 @@
                 <!-- tile -->
                 <section class="tile">
                     <!-- tile header -->
-                    <div class="tile-header bg-blue dvd dvd-btm">
+                    <div class="tile-header bg-blue dvd dvd-btm mb-5">
                         <h1 class="custom-font"><strong>Sanal Pos </strong>Listesi</h1>
                     </div>
                     <!-- /tile header -->
@@ -48,83 +45,83 @@
                                                 </div>
 
                                                 <div class="panel-body p-10">
-                                                    <div class="form-group mb-5" ng-if="checkVisible(1)">
+                                                    <div class="form-group" ng-if="checkVisible(1)">
                                                         <label for="iPaymentStoreNo" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">Mağaza Numarası</label>
                                                         <div class="col-xs-12 col-sm-12 col-md-7">
                                                             <input id="iPaymentStoreNo" type="text" placeholder="Mağaza Numarası" class="form-control" ng-model="posBankDetailItem.StoreNumber" value="{{posBankDetailItem.StoreNumber}}" />
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group mb-5" ng-if="checkVisible(2)">
+                                                    <div class="form-group" ng-if="checkVisible(2)">
                                                         <label for="iPaymentApiUser" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">Api Kullanıcısı</label>
                                                         <div class="col-xs-12 col-sm-12 col-md-7">
                                                             <input id="iPaymentApiUser" type="text" placeholder="Api Kullanıcısı" class="form-control" ng-model="posBankDetailItem.ApiUser" value="{{posBankDetailItem.ApiUser}}" />
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group mb-5" ng-if="checkVisible(3)">
+                                                    <div class="form-group" ng-if="checkVisible(3)">
                                                         <label for="iPaymentPosnetId" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">PosnetId</label>
                                                         <div class="col-xs-12 col-sm-12 col-md-7">
                                                             <input id="iPaymentPosnetId" type="text" placeholder="PosnetId" class="form-control" ng-model="posBankDetailItem.PosnetId" value="{{posBankDetailItem.PosnetId}}" />
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group mb-5" ng-if="checkVisible(4)">
+                                                    <div class="form-group" ng-if="checkVisible(4)">
                                                         <label for="iPaymentPosNo" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">Pos No</label>
                                                         <div class="col-xs-12 col-sm-12 col-md-7">
                                                             <input id="iPaymentPosNo" type="text" placeholder="Pos No" class="form-control" ng-model="posBankDetailItem.TerminalNo" value="{{posBankDetailItem.TerminalNo}}" />
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group mb-5" ng-if="checkVisible(5)">
+                                                    <div class="form-group" ng-if="checkVisible(5)">
                                                         <label for="iPaymentUserName" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">Kullanıcı Adı</label>
                                                         <div class="col-xs-12 col-sm-12 col-md-7">
                                                             <input id="iPaymentUserName" type="text" placeholder="Kullanıcı Adı" class="form-control" ng-model="posBankDetailItem.ApiUser" value="{{posBankDetailItem.ApiUser}}" />
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group mb-5" ng-if="checkVisible(6)">
+                                                    <div class="form-group" ng-if="checkVisible(6)">
                                                         <label for="iPaymentPassword" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">Şifre</label>
                                                         <div class="col-xs-12 col-sm-12 col-md-7">
                                                             <input id="iPaymentPassword" type="text" placeholder="Şifre" class="form-control" ng-model="posBankDetailItem.Password" value="{{posBankDetailItem.Password}}" />
                                                         </div>
                                                     </div>
-                                                    <div class="form-group mb-5" ng-if="checkVisible(7)">
+                                                    <div class="form-group" ng-if="checkVisible(7)">
                                                         <label for="iPaymentPassword" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">Provaut Şifresi</label>
                                                         <div class="col-xs-12 col-sm-12 col-md-7">
                                                             <input id="iPaymentPassword" type="text" placeholder="Provaut Şifresi" class="form-control" ng-model="posBankDetailItem.ProvautPassword" value="{{posBankDetailItem.ProvautPassword}}" />
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group mb-5" ng-if="checkVisible(8)">
+                                                    <div class="form-group" ng-if="checkVisible(8)">
                                                         <label for="iPaymentEncKey" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">ENC Key</label>
                                                         <div class="col-xs-12 col-sm-12 col-md-7">
                                                             <input id="iPaymentEncKey" type="text" placeholder="ENC Key" class="form-control" ng-model="posBankDetailItem._3dSecureKey" value="{{posBankDetailItem._3dSecureKey}}" />
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group mb-5" ng-if="checkVisible(9)">
+                                                    <div class="form-group" ng-if="checkVisible(9)">
                                                         <label for="iPaymentOrganizationNo" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">Organizasyon No</label>
                                                         <div class="col-xs-12 col-sm-12 col-md-7">
                                                             <input id="iPaymentOrganizationNo" type="text" placeholder="Organizasyon No" ng-model="posBankDetailItem.ApiUser" class="form-control" value="{{posBankDetailItem.ApiUser}}" />
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group mb-5" ng-if="checkVisible(10)">
+                                                    <div class="form-group" ng-if="checkVisible(10)">
                                                         <label for="iPaymentBusinessNo" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">İşyeri No</label>
                                                         <div class="col-xs-12 col-sm-12 col-md-7">
                                                             <input id="iPaymentBusinessNo" type="text" placeholder="İşyeri No" class="form-control" ng-model="posBankDetailItem.StoreNumber" value="{{posBankDetailItem.StoreNumber}}" />
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group mb-5" ng-if="checkVisible(11)">
+                                                    <div class="form-group" ng-if="checkVisible(11)">
                                                         <label for="iPaymentTerminalNo" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">Terminal No</label>
                                                         <div class="col-xs-12 col-sm-12 col-md-7">
                                                             <input id="iPaymentTerminalNo" type="text" placeholder="Terminal No" class="form-control" ng-model="posBankDetailItem.TerminalNo" value="{{posBankDetailItem.TerminalNo}}" />
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group mb-5" ng-if="checkVisible(12)">
+                                                    <div class="form-group" ng-if="checkVisible(12)">
                                                         <label for="iPaymentBusinessKey" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">İşyeri Anahtarı</label>
                                                         <div class="col-xs-12 col-sm-12 col-md-7">
                                                             <div class="input-group">
@@ -135,14 +132,14 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group mb-5" ng-if="checkVisible(14)">
+                                                    <div class="form-group" ng-if="checkVisible(14)">
                                                         <label for="iPayment3dSecureKey" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">3D İşyeri Anahtarı</label>
                                                         <div class="col-xs-12 col-sm-12 col-md-7">
                                                             <input id="iPayment3dSecureKey" type="text" placeholder="3D İşyeri Anahtarı" class="form-control" ng-model="posBankDetailItem._3dSecureKey" value="{{posBankDetailItem._3dSecureKey}}" />
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group mb-5" ng-if="checkVisible(15)">
+                                                    <div class="form-group" ng-if="checkVisible(15)">
                                                         <label for="iPayment3dSecureType" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">3D Secure Tipi / Yönetimi</label>
                                                         <div class="col-xs-12 col-sm-12 col-md-7">
                                                             <div class="input-group">
@@ -153,7 +150,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group mb-5" ng-if="checkVisible(17)">
+                                                    <div class="form-group" ng-if="checkVisible(17)">
                                                         <label for="iPaymentMinimumInstallmentAmountTL" class="col-xs-12 col-sm-5 col-md-5 control-label text-left hidden-xs hidden-sm">Minimum Taksit Tutarı</label>
                                                         <div class="col-xs-12 col-sm-12 col-md-7">
                                                             <input id="iPaymentMinimumInstallmentAmountTL" type="text" placeholder="Minimum Taksit Tutarı" ng-model="posBankDetailItem.MinimumInstallmentPrice" value="{{posBankDetailItem.MinimumInstallmentPrice}}" class="form-control eryaz-numeric-input" />

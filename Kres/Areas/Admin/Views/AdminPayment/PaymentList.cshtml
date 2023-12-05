@@ -47,7 +47,7 @@
                 <!-- tile -->
                 <section class="tile">
                     <!-- tile header -->
-                    <div class="tile-header bg-blue dvd dvd-btm">
+                    <div class="tile-header bg-blue dvd dvd-btm mb-4">
                         <h1 class="custom-font"><strong>Ödeme </strong>Listesi</h1>
                     </div>
                     <!-- /tile header -->
@@ -65,13 +65,13 @@
                                                     <input id="iPaymentEndDate" type="text" ng-model="paymentSearchCriteria.EndDate" placeholder="Bitiş Tarihi" class="form-control" />
                                                 </div>*@
                                             <div class="form-group row" id="date_5">
-                                                <label class="col-sm-2 col-form-label">Gösterim Tarihi</label>
-                                                <div class="col-sm-10 input-daterange input-group" id="datepicker">
-                                                    <input id="iPaymentStartDate" class="input-sm form-control" type="text" name="start" ng-model="paymentSearchCriteria.StartDate">
+                                                <label class="col-sm-5 col-form-label">Başlangıç Tarihi :</label>
+                                                <div class="col-sm-7 input-daterange input-group" id="datepicker">
+                                                    <input id="iPaymentStartDate" class="input-sm form-control" type="text" name="start" ng-model="paymentSearchCriteria.StartDate" placeholder="01.01.2024">
                                                 </div>
-                                                <label class="col-sm-2 col-form-label">Gösterim Tarihi</label>
-                                                <div class="col-sm-10 input-daterange input-group" id="datepicker">
-                                                    <input id="iPaymentEndDate" class="input-sm form-control" type="text" name="end" ng-model="paymentSearchCriteria.EndDate">
+                                                <label class="col-sm-5 col-form-label">Bitiş Tarihi :</label>
+                                                <div class="col-sm-7 input-daterange input-group pt-2" id="datepicker">
+                                                    <input id="iPaymentEndDate" class="input-sm form-control" type="text" name="end" ng-model="paymentSearchCriteria.EndDate" placeholder="01.12.2024">
                                                 </div>
                                             </div>
                                         </div>
@@ -235,6 +235,7 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
+
                                         </div>
                                     </div>
                                 </div>

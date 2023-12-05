@@ -79,11 +79,11 @@
 
 html,
 body {
-    color: #898989;
+    color: #000;
     font-size: 14px;
     font-family: 'Poppins', sans-serif;
     line-height: normal;
-    font-weight: 300;
+    font-weight: 500;
     overflow-x: hidden !important;
 }
 
@@ -3426,4 +3426,13 @@ table.projects tr td:first-child {
 #map {
     height: 100%;
     min-height: 720px;
+}
+.Adminpayment-table-th {
+    background-color: lightblue;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.checkbox-size input {
+    transform: scale(1.5);
 }
