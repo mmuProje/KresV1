@@ -202,10 +202,11 @@ iframe {
 /*==================================================================
 [ Text ]*/
 .txt1 {
-    font-family: Montserrat-Regular;
-    font-size: 13px;
+    font-family: arial;
     line-height: 1.4;
+    font-size: 1.2em;
     color: #555555;
+}
 }
 
 .txt2 {
