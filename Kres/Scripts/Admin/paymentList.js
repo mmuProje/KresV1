@@ -126,7 +126,7 @@ angular.module('AdminLayoutApp', [])
                 $scope.paymentSearch(paymentSearchCriteria);
             }
         }
-
+       
         function setDefaultDate() {
             var today = new Date();
             var dStart = '01/01/' + today.getFullYear();
@@ -140,6 +140,12 @@ angular.module('AdminLayoutApp', [])
                 format: 'DD/MM/YYYY',
                 locale: 'tr'
             }).val(today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear());
+        }
+
+        $scope.closeModal = function () {
+            //var modal = document.querySelector('.modal');
+            //modal.style.display = 'none'; // Modalı gizle
+            $('#mPaymentDetail').modal('hide');
         }
 
         $scope.clear = function () {

@@ -3436,3 +3436,7 @@ table.projects tr td:first-child {
 .checkbox-size input {
     transform: scale(1.5);
 }
+.header-responsive
+{
+    margin:2%;
+}

@@ -268,69 +268,98 @@
         margin: 15px 0 0 0;
     }
 }
+@media (max-width: 981px) {
+    .dialog-payment-responsive {
+        max-width: 100% !important;
+    }
+
+    .responsive-modal {
+        display: block !important;
+        min-width: 100% !important;
+    }
+
+        .responsive-modal .col-md-6 {
+            min-width: inherit;
+        }
+}
 
 @media (max-width: 767px) {
     .counter_section {
         padding: 30px 25px;
     }
+
     .counter_no {
         padding: 0;
     }
-    .counter_no .head_couter {
-        font-size: 16px;
-    }
+
+        .counter_no .head_couter {
+            font-size: 16px;
+        }
+
     #testimonial_slider.carousel .carousel-control {
         top: -35px;
     }
+
     .content.testimonial {
         margin-top: 50px;
     }
+
     #testimonial_slider.carousel .testimonial {
         font-size: 13px;
         line-height: normal;
     }
+
     .progress_bar {
         padding: 15px 25px 50px 25px;
     }
+
     .dash_head {
         padding: 30px 30px 25px;
     }
+
     .task_list li {
         padding: 20px 30px;
     }
-    .task_list li a {
-        color: #99abb4;
-        font-size: 15px;
-        line-height: normal;
-        margin-bottom: 10px;
-        float: left;
-        width: 100%;
-    }
+
+        .task_list li a {
+            color: #99abb4;
+            font-size: 15px;
+            line-height: normal;
+            margin-bottom: 10px;
+            float: left;
+            width: 100%;
+        }
+
     .msg_list_main ul li {
         display: block;
     }
-    .msg_list_main ul li>span:nth-child(1) {
-        margin-right: 20px;
-        margin-bottom: 10px;
-    }
+
+        .msg_list_main ul li > span:nth-child(1) {
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
     /*----- widgets page css -----*/
     .info_people {
         padding: 25px;
         display: block;
     }
-    .info_people .p_info_img {
-        width: 100%;
-        text-align: center;
-    }
-    .info_people .p_info_img img {
-        width: 90px;
-    }
-    .info_people .user_info_cont {
-        width: 100%;
-        padding-left: 0;
-        padding-top: 25px;
-        text-align: center;
-    }
+
+        .info_people .p_info_img {
+            width: 100%;
+            text-align: center;
+        }
+
+            .info_people .p_info_img img {
+                width: 90px;
+            }
+
+        .info_people .user_info_cont {
+            width: 100%;
+            padding-left: 0;
+            padding-top: 25px;
+            text-align: center;
+        }
+
     .calendar {
         overflow: auto;
     }
@@ -338,18 +367,22 @@
     .tab_style3 .tabbar {
         display: block;
     }
+
     .tab_style3 #v-pills-tabContent {
         width: 100%;
         padding-left: 0;
         padding-right: 0;
         padding-top: 25px;
     }
+
     .pagination.button_section {
         display: block;
     }
-    .pagination.button_section .btn-group {
-        margin: 5px 0 0;
-    }
+
+        .pagination.button_section .btn-group {
+            margin: 5px 0 0;
+        }
+
     .fw_icon {
         width: 50%;
     }
@@ -358,22 +391,26 @@
         float: left;
         width: 100%;
     }
-    .mail-box .sm-side {
-        width: 100%;
-        float: left;
-    }
-    .mail-box .lg-side {
-        background: none repeat scroll 0 0 #fff;
-        border-radius: 0 4px 4px 0;
-        width: 100%;
-        float: left;
-        overflow: auto;
-    }
+
+        .mail-box .sm-side {
+            width: 100%;
+            float: left;
+        }
+
+        .mail-box .lg-side {
+            background: none repeat scroll 0 0 #fff;
+            border-radius: 0 4px 4px 0;
+            width: 100%;
+            float: left;
+            overflow: auto;
+        }
+
     aside.lg-side .inbox-body {
         min-width: 565px;
         padding-left: 0;
         padding-right: 0;
     }
+
     .table.table-striped.projects {
         min-width: 780px;
     }
@@ -381,33 +418,41 @@
     .full_height {
         height: auto;
     }
+
     .login_section {
         margin-top: 25px;
         margin-bottom: 25px;
     }
+
     .login_form form .field input {
         max-width: 395px;
         width: 100%;
     }
+
     .login_form form .field label.label_field {
         text-align: left;
     }
+
     .login_form form .field {
         display: block;
         margin: 0 0 20px;
         float: left;
         width: 100%;
     }
+
     .label_field.hidden {
         display: none;
     }
+
     .login_form form .field .form-check-label {
         float: left;
         width: 100%;
     }
+
     .forgot {
         float: left;
     }
+
     .error_page h3 {
         font-size: 36px;
         line-height: 45px;
