@@ -1,0 +1,380 @@
+﻿@using System.Web
+@using Kres.Models.Helper
+
+@{
+    ViewBag.Title = "Öğrenci";
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker3.min.css" rel="stylesheet" />
+
+}
+
+
+@section cStyleLibrary{}
+
+@section cStyleCode
+{
+    <style type="text/css">
+        .payment-print {
+            background-color: #007400 !important;
+            color: white !important;
+            font-weight: bold !important;
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+    </style>
+}
+
+<div class="page page-paymnet-list" ng-controller="studentListController">
+    <div class="pageheader">
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    <a href="/Admin"><i class="fa fa-home"></i> Öğrenciler / Öğrenci Listesi</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- #region Page Content -->
+    <div class="pagecontent">
+        <div class="row">
+            <!-- col -->
+            <div class="col-sm-12">
+                <!-- tile -->
+                <section class="tile">
+                    <!-- tile header -->
+                    <div class="tile-header bg-blue dvd dvd-btm mb-4">
+                        <h1 class="custom-font"><strong>Öğrenci </strong>Listesi</h1>
+                    </div>
+                    <!-- /tile header -->
+                    <!-- tile widget -->
+                    <div class="tile-widget">
+                        <div class="form-horizontal">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="iOrderCode" class="col-xs-12 col-sm-5 col-md-4 control-label text-left hidden-xs hidden-sm">Tarih Aralığı</label>
+                                        <div class="col-xs-12 col-sm-12 col-md-8">
+                                            <div class="form-group row" id="date_5">
+                                                <label class="col-sm-5 col-form-label">Başlangıç Tarihi :</label>
+                                                <div class="col-sm-7 input-daterange input-group" id="datepicker">
+                                                    <input id="iPaymentStartDate" class="input-sm form-control" type="text" name="start" ng-model="studentSearchCriteria.StartDate" placeholder="Tarih Giriniz">
+                                                </div>
+                                                <label class="col-sm-5 col-form-label">Bitiş Tarihi :</label>
+                                                <div class="col-sm-7 input-daterange input-group pt-2" id="datepicker">
+                                                    <input id="iPaymentEndDate" class="input-sm form-control" type="text" name="end" ng-model="studentSearchCriteria.EndDate" placeholder="Tarih Giriniz">
+                                                </div>
+
+                                                <label class="col-sm-5 col-form-label">Genel Arama :</label>
+                                                <div class="col-sm-7 input-group pt-2">
+                                                    <input id="iOrderSearch" type="text" ng-model="studentSearchCriteria.T9Text" ng-keypress="keypressEventPaymentSearch($event,studentSearchCriteria)" placeholder="Genel Arama" class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="p-0">
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <label class="checkbox checkbox-custom-alt">
+                                                            <input id="iOrderStatu0" name="iOrderStatu" ng-model="studentSearchCriteria.PaymentStatu" ng-change="studentSearchCriteria.PaymentStatu=0" ng-checked="studentSearchCriteria.PaymentStatu==0" type="radio"><i></i> Tümü
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <label class="checkbox checkbox-custom-alt">
+                                                            <input id="iOrderStatu1" name="iOrderStatu" ng-model="studentSearchCriteria.PaymentStatu" ng-change="studentSearchCriteria.PaymentStatu=1" ng-checked="studentSearchCriteria.PaymentStatu==1" type="radio"><i></i> Aktif
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <label class="checkbox checkbox-custom-alt">
+                                                            <input id="iOrderStatu2" name="iOrderStatu" ng-model="studentSearchCriteria.PaymentStatu" ng-change="studentSearchCriteria.PaymentStatu=2" ng-checked="studentSearchCriteria.PaymentStatu==2" type="radio"><i></i> Pasif
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        @*<div class="col-sm-6">
+                                            <div class="p-0">
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <label class="checkbox checkbox-custom-alt">
+                                                            <input id="iOrderStatu3" name="iOrderStatu" ng-model="paymentSearchCriteria.PaymentStatu" ng-change="paymentSearchCriteria.PaymentStatu=3" ng-checked="paymentSearchCriteria.PaymentStatu==3" type="radio"><i></i> Onaylanmış
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <label class="checkbox checkbox-custom-alt">
+                                                            <input id="iOrderStatu4" name="iOrderStatu" ng-model="paymentSearchCriteria.PaymentStatu" ng-change="paymentSearchCriteria.PaymentStatu=4" ng-checked="paymentSearchCriteria.PaymentStatu==4" type="radio"><i></i> Onaylanmamış
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <label class="checkbox checkbox-custom-alt">
+                                                            <input id="iOrderStatu99" name="iOrderStatu" ng-model="paymentSearchCriteria.PaymentStatu" ng-change="paymentSearchCriteria.PaymentStatu=5" ng-checked="paymentSearchCriteria.PaymentStatu==5" type="radio"><i></i> İptal
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>*@
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4 text-center">
+                                    <div class="mb-20"></div>
+                                    <div class="btn-group btn-group-rounded btn-group-lg">
+                                        <button class="btn btn-primary btn-rounded btn-ef btn-ef-5 btn-ef-5a" ng-click="studentSearch(studentSearchCriteria)"><i class="fa fa-search"></i> <span>Ara</span></button>
+                                        <button class="btn btn-warning btn-rounded btn-ef btn-ef-5 btn-ef-5a" ng-click="studentSearch(studentSearchCriteria)"><i class="fa fa-refresh"></i> <span>Yenile</span></button>
+                                        <button class="btn btn-danger btn-rounded btn-ef btn-ef-5 btn-ef-5a" ng-click="clear();"><i class="fa fa-reply"></i> <span>İptal</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /tile widget -->
+
+                    <hr class="m-0" />
+
+                    <!-- tile body -->
+                    <div class="tile-body p-10">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row form-horizontal form-group-sm">
+                                    <div class="col-sm-12">
+                                        <div loading-container="tableOrdersParams.settings().$loading" class="table-responsive">
+                                            <table class="table table-striped" disable-filter="isAdding" demo-tracked-table="tableTracker">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th scope="col">ID</th>
+                                                        <th scope="col"></th>
+                                                        <th scope="col">ÖĞRENCİ NO</th>
+                                                        <th scope="col">AD</th>
+                                                        <th scope="col">SOYAD</th>
+                                                        <th scope="col">YAŞ</th>
+                                                        <th scope="col">CİNSİYET</th>
+                                                        <th scope="col">İŞLEMLER</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="item in studentlist">
+                                                        <th scope="row">{{item.Id}}</th>
+                                                        <th scope="row">{{item.Student.Code}}</th>
+                                                        <th scope="row">{{item.Student.Name}}</th>
+                                                        <th scope="row">{{item.NameSurname}}</th>
+                                                        <th scope="row">{{item.BankName}}</th>
+                                                        <th scope="row">{{item.CardNumber}}</th>
+                                                        <th scope="row">{{item.Amount}}</th>
+                                                        <th scope="row" class="text-center">
+                                                            <div class="btn-group btn-group-xs mb-0">
+                                                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                                                    <i class="fa fa-gears"></i> <span class="caret"></span>
+                                                                </button>
+
+                                                                <ul role="menu" class="dropdown-menu pull-right with-arrow animated littleFadeInUp text-center">
+                                                                    <li ng-click="tableLinkedShowDetail(row)"><a href="javascript:;"><i class="fa fa-info-circle"></i> Detay</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /tile body -->
+                </section>
+                <!-- /tile -->
+                <!-- /col -->
+            </div>
+            <!-- /row -->
+        </div>
+
+        <div id="mPaymentDetail" tabindex="-1" role="dialog" aria-labelledby="mBlogCommentLabel" aria-hidden="true" class="modal fade">
+            <div class="modal-dialog dialog-payment-responsive" style="max-width:45%;">
+                <div class="modal-content">
+                    <div class="modal-header header-responsive">
+
+                        <h2 class="custom-font">Ödeme Detayı</h2>
+                        <a class="close" aria-label="Close" ng-click="closeModal()"><span aria-hidden="true">&times;</span></a>
+                    </div>
+                    <div class="modal-body">
+                        <form id="mTaskListCommentForm" role="form" method="post" class="form-horizontal form-modal">
+
+                            <div class="col-md-12 responsive-modal" style="display:flex">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-4 col-form-label">IP Adresi :</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" disabled class="form-control" id="inputEmail3" placeholder="{{selectedPayment.IpAddress}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-4 col-form-label">Transfer ID :</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" disabled class="form-control" id="inputEmail3" placeholder="{{selectedPayment.TransId}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-4 col-form-label">Sipariş NO :</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" disabled class="form-control" id="inputEmail3" placeholder="{{selectedPayment.Oid}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-4 col-form-label">Grup NO :</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" disabled class="form-control" id="inputEmail3" placeholder="{{selectedPayment.GroupId}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-4 col-form-label">Onay Mesajı :</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" disabled class="form-control" id="inputEmail3" placeholder="{{selectedPayment.Appr}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-4 col-form-label">Hata Mesajı :</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" disabled class="form-control" id="inputEmail3" placeholder="{{selectedPayment.ErrMsg}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-4 col-form-label">İşlem Kodu :</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" disabled class="form-control" id="inputEmail3" placeholder="{{selectedPayment.ProcReturnCode}}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-4 col-form-label">Not :</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" disabled class="form-control" id="inputEmail3" placeholder="{{selectedPayment.Note}}">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-4 col-form-label">Sipariş No :</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" disabled class="form-control" id="inputEmail3" placeholder="{{selectedPayment.OrderId}}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-4 col-form-label">Ödeme No :</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" disabled class="form-control" id="inputEmail3" placeholder="{{selectedPayment.PaymentId}}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-4 col-form-label">Kullanılan Pos :</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" disabled class="form-control" id="inputEmail3" placeholder="{{selectedPayment.UseEPaymentType}}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-4 col-form-label">Telefon No :</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" disabled class="form-control" id="inputEmail3" placeholder="{{selectedPayment.PhoneNumber}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-4 col-form-label">Bonus :</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" disabled class="form-control" id="inputEmail3" placeholder="{{selectedPayment.UseBonus}}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-4 col-form-label">Toplam Bonus :</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" disabled class="form-control" id="inputEmail3" placeholder="{{selectedPayment.StudentTotalBonus}}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-4 col-form-label">3D :</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" disabled class="form-control" id="inputEmail3" placeholder="{{selectedPayment._3DSecure}}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-4 col-form-label">Extra :</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" disabled class="form-control" id="inputEmail3" placeholder="{{selectedPayment.Extra}}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer" style="color:white">
+                        <a ng-click="closeModal()" class="btn btn-danger btn-rounded btn-ef btn-ef-5 btn-ef-5a text-right"><i class="fa fa-reply"></i> <span>Kapat</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="mPdfShow" tabindex="-1" role="dialog" aria-labelledby="mPdfShowLabel" aria-hidden="true" class="modal fade" style="min-height:800px;width:100%">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <iframe style="min-height:600px;width:100%" src="{{frameUrl}}"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- #endregion -->
+</div>
+
+@section cScriptLibrary{}
+
+@section cScriptCode{
+
+    <script src="@Url.ContentVersioned("/Scripts/Admin/student.js", HttpContext.Current.Request)"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/locales/bootstrap-datepicker.tr.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#date_5 .input-daterange').datepicker({
+                keyboardNavigation: true,
+                format: 'dd.mm.yyyy',
+                // startDate: '0d',
+                language: 'tr',
+                forceParse: true,
+                autoclose: true
+            });
+        })
+    </script>
+}

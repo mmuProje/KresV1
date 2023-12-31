@@ -90,10 +90,49 @@ namespace Kres.Models.EntityLayer
                 //item.PaymentOnOrder = row.Field<bool>("PaymentOnOrder");
                 //item.StatuOriginalPrice = row.Field<bool>("StatuOriginalPrice");
                 // item.PicturePath = row.Field<string>("PicturePath") == string.Empty || row.Field<string>("PicturePath") == null ? "../Content/Admin/images/noavatar.png" : GlobalSettings.FtpServerAddressFull + row.Field<string>("PicturePath"); 
-               // item.Deleted = row.Field<int>("Deleted")
+                // item.Deleted = row.Field<int>("Deleted")
             }
 
             return item;
+        }
+
+
+        public static List<Student> GetListStudent(DateTime startDate, DateTime endDate, string t9Text, int studentStatu)
+        {
+            using (DataTable dt = DAL.GetStudentList(startDate, endDate, t9Text, studentStatu))
+            {
+                List<Student> list = new List<Student>();
+                foreach (DataRow row in dt.Rows)
+                {
+                    Student students = new Student()
+                    {
+                        Id = row.Field<int>("Id"),
+                        Code = row.Field<string>("Code"),
+                        LoginCode = row.Field<string>("LoginCode"),
+                        Password = row.Field<string>("Password"),
+                        Name = row.Field<string>("Name"),
+                        GuardianName = row.Field<string>("GuardianName"),
+                        Address = row.Field<string>("Address"),
+                        Town = row.Field<string>("Town"),
+                        City = row.Field<string>("City"),
+                        Mail = row.Field<string>("Mail"),
+                        Status = row.Field<int>("Status"),
+                        PaymentType = row.Field<int>("PaymentType"),
+                        Tel1 = row.Field<string>("Tel1"),
+                        Tel2 = row.Field<string>("Tel2"),
+                        Fax1 = row.Field<string>("Fax1"),
+                        Gsm1 = row.Field<string>("Gsm1"),
+                        Gsm2 = row.Field<string>("Gsm2"),
+                        Notes = row.Field<string>("Notes"),
+                        RecordDate = row.Field<DateTime>("RecordDate"),
+                        EditDate = row.Field<DateTime>("EditDate"),
+                        TradingGroup = row.Field<string>("TradingGroup"),
+                        PaymentCode = row.Field<string>("PaymentCode")
+                    };
+                    list.Add(students);
+                }
+                return list;
+            }
         }
         #endregion
 
@@ -104,6 +143,10 @@ namespace Kres.Models.EntityLayer
         public DataTable GetStudentById(int pId)
         {
             return DatabaseContext.ExecuteReader(CommandType.StoredProcedure, "_GetItem_StudentById", MethodBase.GetCurrentMethod().GetParameters(), new object[] { pId });
+        }
+        public DataTable GetStudentList(DateTime pStartDate, DateTime pEndDate, string pT9Text, int pPaymentStatu)
+        {
+            return DatabaseContext.ExecuteReader(CommandType.StoredProcedure, "_GetList_Student", MethodBase.GetCurrentMethod().GetParameters(), new object[] { pStartDate, pEndDate, pT9Text, pPaymentStatu });
         }
     }
 }

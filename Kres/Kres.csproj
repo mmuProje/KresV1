@@ -162,6 +162,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminPaymentController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomesController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminLoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StudentController.cs" />
     <Compile Include="Areas\Admin\Models\AdminBaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -425,6 +426,7 @@
     <Content Include="Scripts\Admin\popper.min.js" />
     <Content Include="Scripts\Admin\semantic.min.js" />
     <Content Include="Scripts\Admin\settings.html" />
+    <Content Include="Scripts\Admin\student.js" />
     <Content Include="Scripts\Admin\utils.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
@@ -1285,6 +1287,7 @@
     <Content Include="Content\Admin\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Content\Admin\vendor\bootstrap\css\bootstrap.min.css.map" />
     <Content Include="Areas\Admin\Views\AdminPayment\PaymentList.cshtml" />
+    <Content Include="Areas\Admin\Views\Student\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
     <Content Include="Scripts\i18n\angular-locale_af-za.js" />

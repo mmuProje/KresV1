@@ -100,7 +100,7 @@
                             </ul>
                         </li>
 
-                        <li><a href="widgets.html"><i class="fa fa-user orange_color"></i> <span>Öğrenciler</span></a></li>
+                        <li><a href="/Admin/Student/Index"><i class="fa fa-user orange_color"></i> <span>Öğrenciler</span></a></li>
                         <li>
                             <a href="#element" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-users purple_color"></i> <span>Öğretmenler</span></a>
                             <ul class="collapse list-unstyled" id="element">
@@ -235,8 +235,8 @@
         var ps = new PerfectScrollbar('#sidebar');
     </script>
     <!-- custom js -->
-    <script src="~/Scripts/Admin/custom.js"></script>
-    <script src="~/Scripts/Admin/chart_custom_style1.js"></script>
+    @*<script src="~/Scripts/Admin/custom.js"></script>
+    <script src="~/Scripts/Admin/chart_custom_style1.js"></script>*@
     @RenderSection("cScriptCode", required: false)
     @RenderSection("cModals", required: false)
     @RenderSection("cScriptLibrary", required: false)
