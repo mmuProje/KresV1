@@ -100,7 +100,7 @@ namespace Kres.Models.EntityLayer
         }
 
 
-       // public static List<Student> GetListStudent(DateTime startDate, DateTime endDate, string t9Text, int studentStatu)
+        // public static List<Student> GetListStudent(DateTime startDate, DateTime endDate, string t9Text, int studentStatu)
         public static List<Student> GetListStudent(string t9Text)
         {
             using (DataTable dt = DAL.GetStudentList(t9Text))
@@ -117,7 +117,7 @@ namespace Kres.Models.EntityLayer
                         Age = row.Field<DateTime>("Age"),
                         Gender = row.Field<string>("Gender"),
                         PicturePath = row.Field<string>("PicturePath") == string.Empty ? "https://" + HttpContext.Current.Request.Url.Authority + "/Content/images/nophoto.png" : row.Field<string>("PicturePath")
-                };
+                    };
                     list.Add(students);
                 }
                 return list;
