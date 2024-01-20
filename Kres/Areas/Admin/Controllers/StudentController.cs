@@ -24,9 +24,10 @@ namespace Kres.Areas.Admin.Controllers
         [HttpPost]
         public string GetListStudent(StudentSearchCriteria studentSearchCriteria)
         {
-            studentSearchCriteria.EndDate = studentSearchCriteria.EndDate.Date.Add(new TimeSpan(23, 59, 59));
-            studentSearchCriteria.T9Text = studentSearchCriteria.T9Text == null ? string.Empty : studentSearchCriteria.T9Text;
-            return JsonConvert.SerializeObject(Student.GetListStudent(studentSearchCriteria.StartDate, studentSearchCriteria.EndDate, studentSearchCriteria.T9Text, studentSearchCriteria.StudentStatu));
+            //studentSearchCriteria.EndDate = studentSearchCriteria.EndDate.Date.Add(new TimeSpan(23, 59, 59));
+            // return JsonConvert.SerializeObject(Student.GetListStudent(studentSearchCriteria.StartDate, studentSearchCriteria.EndDate, studentSearchCriteria.T9Text, studentSearchCriteria.StudentStatu));
+            studentSearchCriteria.T9Text = studentSearchCriteria.T9Text == null ? "*" : studentSearchCriteria.T9Text;
+            return JsonConvert.SerializeObject(Student.GetListStudent(studentSearchCriteria.T9Text));
         }
 
        

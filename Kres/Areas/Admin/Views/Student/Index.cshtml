@@ -55,17 +55,17 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label for="iOrderCode" class="col-xs-12 col-sm-5 col-md-4 control-label text-left hidden-xs hidden-sm">Tarih Aralığı</label>
+                                        @*<label for="iOrderCode" class="col-xs-12 col-sm-5 col-md-4 control-label text-left hidden-xs hidden-sm">Tarih Aralığı</label>*@
                                         <div class="col-xs-12 col-sm-12 col-md-8">
                                             <div class="form-group row" id="date_5">
-                                                <label class="col-sm-5 col-form-label">Başlangıç Tarihi :</label>
+                                                @*<label class="col-sm-5 col-form-label">Başlangıç Tarihi :</label>
                                                 <div class="col-sm-7 input-daterange input-group" id="datepicker">
                                                     <input id="iPaymentStartDate" class="input-sm form-control" type="text" name="start" ng-model="studentSearchCriteria.StartDate" placeholder="Tarih Giriniz">
                                                 </div>
                                                 <label class="col-sm-5 col-form-label">Bitiş Tarihi :</label>
                                                 <div class="col-sm-7 input-daterange input-group pt-2" id="datepicker">
                                                     <input id="iPaymentEndDate" class="input-sm form-control" type="text" name="end" ng-model="studentSearchCriteria.EndDate" placeholder="Tarih Giriniz">
-                                                </div>
+                                                </div>*@
 
                                                 <label class="col-sm-5 col-form-label">Genel Arama :</label>
                                                 <div class="col-sm-7 input-group pt-2">
@@ -78,7 +78,7 @@
 
                                 <div class="col-sm-4">
                                     <div class="row">
-                                        <div class="col-sm-6">
+                                        @*<div class="col-sm-6">
                                             <div class="p-0">
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
@@ -104,7 +104,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>*@
 
                                         @*<div class="col-sm-6">
                                             <div class="p-0">
@@ -166,7 +166,7 @@
                                                         <th scope="col">ÖĞRENCİ NO</th>
                                                         <th scope="col">AD</th>
                                                         <th scope="col">SOYAD</th>
-                                                        <th scope="col">YAŞ</th>
+                                                        <th scope="col">DOĞUM TARİHİ</th>
                                                         <th scope="col">CİNSİYET</th>
                                                         <th scope="col">İŞLEMLER</th>
                                                     </tr>
@@ -174,12 +174,12 @@
                                                 <tbody>
                                                     <tr ng-repeat="item in studentlist">
                                                         <th scope="row">{{item.Id}}</th>
-                                                        <th scope="row">{{item.Student.Code}}</th>
-                                                        <th scope="row">{{item.Student.Name}}</th>
-                                                        <th scope="row">{{item.NameSurname}}</th>
-                                                        <th scope="row">{{item.BankName}}</th>
-                                                        <th scope="row">{{item.CardNumber}}</th>
-                                                        <th scope="row">{{item.Amount}}</th>
+                                                        <th scope="row"><img src="{{item.PicturePath}}" alt="user" width="35px"/></th>
+                                                        <th scope="row">{{item.Code}}</th>
+                                                        <th scope="row">{{item.Name}}</th>
+                                                        <th scope="row">{{item.GuardianName}}</th>
+                                                        <th scope="row">{{item.Age |  date:'MM/dd/yyyy'}}</th>
+                                                        <th scope="row">{{item.Gender}}</th>
                                                         <th scope="row" class="text-center">
                                                             <div class="btn-group btn-group-xs mb-0">
                                                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">

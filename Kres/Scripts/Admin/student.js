@@ -10,33 +10,12 @@ angular.module('AdminLayoutApp', [])
             EndDate: ''
         };
 
-        //$scope.showPdf = function (item) {
-        //    //fireCustomLoading(true);
-        //    $http({
-        //        method: "POST",
-        //        url: "/Admin/AdminPayment/SavePdf",
-        //        headers: { "Content-Type": "Application/json;charset=utf-8" },
-        //        data: { eItem: item }//, 
-        //    }).then(function (response) {
-        //        $scope.frameUrl = response.data;
-
-        //        $('#mPdfShow').appendTo("body").modal('show');
-
-        //        //fireCustomLoading(false);
-
-        //    });
-        //}
-
         $scope.tableLinkedShowDetail = function (row) {
             $scope.selectedPayment = row;
             $('#mPaymentDetail').appendTo("body").modal('show');
         };
 
         $scope.studentSearch = function (studentSearchCriteria) {
-            ////fireCustomLoading(true);
-            studentSearchCriteria.StartDate = $('#iPaymentStartDate').val();
-            studentSearchCriteria.EndDate = $('#iPaymentEndDate').val();
-
             ////fireCustomLoading(true);
             $http({
                 method: "POST",
@@ -47,6 +26,16 @@ angular.module('AdminLayoutApp', [])
             }).then(function (response) {
 
                 $scope.studentlist = response.data;
+
+                if (response.data.length <= 0) {
+                    iziToast.show({
+                        title: 'Hata',
+                        message: 'Sonuç Bulunamadı!',
+                        position: 'topCenter',
+                        color: 'red',
+                        icon: response.data.Icon
+                    });
+                }
                 //fireCustomLoading(false);
 
             });
