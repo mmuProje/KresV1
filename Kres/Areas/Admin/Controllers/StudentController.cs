@@ -18,6 +18,11 @@ namespace Kres.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult StudentAdd()
+        {
+            return View();
+        }
+
 
 
         #region Methods
