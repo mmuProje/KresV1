@@ -428,6 +428,7 @@
     <Content Include="Scripts\Admin\semantic.min.js" />
     <Content Include="Scripts\Admin\settings.html" />
     <Content Include="Scripts\Admin\student.js" />
+    <Content Include="Scripts\Admin\StudentAdd.js" />
     <Content Include="Scripts\Admin\utils.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
