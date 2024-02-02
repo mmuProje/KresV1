@@ -5,13 +5,81 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
 }
 
-<div ng-controller="studentAddController">
-    <h2>StudentAdd</h2>
+<div ng-controller="studentAddController" style="background-color:white;">
+    <div class="container pt-5 pb-5">
+        <form>
+            <div class="form-row">
+                <div class="col-md-3 mb-3">
+                    <label for="validationDefault01">Adı</label>
+                    <input type="text" class="form-control" id="validationDefault01" placeholder="First name" value="Mark" required>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="validationDefault02">Soyadı</label>
+                    <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" value="Otto" required>
+                </div>
+                <div class="col-md-3 mb-3">                   
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="validationDefault02">Fotoğraf</label>
+                    <input type="file" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">Dosya Seçiniz</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-3 mb-3">
+                    <label for="exampleFormControlInput1">Telefon Numarası</label>
+                    <input type="number" class="form-control" id="exampleFormControlInput1" max="11" placeholder="0 000-000-000" required>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="exampleFormControlInput1">Mail Adresiniz</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@gmail.com" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-3 mb-3">
+                    <label for="exampleFormControlInput1">Doğum Tarihi</label>
+                    <input type="datetime-local" class="form-control" id="exampleFormControlInput1" placeholder="" required>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="inputState">Cinsiyet</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>Seçiniz..</option>
+                        <option value="boy">Erkek</option>
+                        <option value="girl">Kız</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-3 mb-3">
+                    <label for="validationTextarea">Adres</label>
+                    <textarea class="form-control" id="validationTextarea" placeholder="Lütfen Adresi Giriniz..." required></textarea>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-3 mb-3">
+                    <label for="validationDefault03">Şehir</label>
+                    <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="validationDefault04">İlçe</label>
+                    <input type="text" class="form-control" id="validationDefault04" placeholder="Town" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                    <label class="form-check-label" for="invalidCheck2">
+                        Yeni Öğrenci Kaydını Onaylıyorum.
+                    </label>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Kaydı Tamamla</button>
+        </form>
+
+    </div>
 
 </div>
-
-
-
 
 <script src="@Url.ContentVersioned("/Scripts/Admin/StudentAdd.js", HttpContext.Current.Request)"></script>
 
