@@ -11,38 +11,39 @@
             <div class="form-row">
                 <div class="col-md-3 mb-3">
                     <label for="validationDefault01">Adı</label>
-                    <input type="text" class="form-control" id="validationDefault01" placeholder="First name" value="Mark" required>
+                    <input type="text" class="form-control" id="validationDefault01" ng-model="selectedStudent.Name" placeholder="First name" value="Ad" required>
                 </div>
                 <div class="col-md-3 mb-3">
                     <label for="validationDefault02">Soyadı</label>
-                    <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" value="Otto" required>
-                </div>
-                <div class="col-md-3 mb-3">                   
+                    <input type="text" class="form-control" id="validationDefault02" ng-model="selectedStudent.GuardianName" placeholder="Last name" value="Soyad" required>
                 </div>
                 <div class="col-md-3 mb-3">
-                    <label for="validationDefault02">Fotoğraf</label>
-                    <input type="file" class="custom-file-input" id="customFile">
-                    <label class="custom-file-label" for="customFile">Dosya Seçiniz</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3"><strong>Görsel Yükle</strong></label>
+                    <div class="col-sm-9">
+                        <input type="file" id="file-selector" ng-model="image_sourceIcon" base-sixty-four-input onchange="angular.element(this).scope().setFileImage(this)" accept="all/*" data-buttonText="Görsel Yükle" data-iconName="fa fa-image" class="filestyle" />
+                    </div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col-md-3 mb-3">
                     <label for="exampleFormControlInput1">Telefon Numarası</label>
-                    <input type="number" class="form-control" id="exampleFormControlInput1" max="11" placeholder="0 000-000-000" required>
+                    <input type="tel" class="form-control" id="exampleFormControlInput1" ng-model="selectedStudent.Tel1" placeholder="0 000-000-000" required>
                 </div>
                 <div class="col-md-3 mb-3">
                     <label for="exampleFormControlInput1">Mail Adresiniz</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@gmail.com" required>
+                    <input type="email" class="form-control" id="exampleFormControlInput1" ng-model="selectedStudent.Mail" placeholder="name@gmail.com" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col-md-3 mb-3">
                     <label for="exampleFormControlInput1">Doğum Tarihi</label>
-                    <input type="datetime-local" class="form-control" id="exampleFormControlInput1" placeholder="" required>
+                    <input type="datetime-local" class="form-control" id="date" ng-model="selectedStudent.Age" placeholder="" required>
                 </div>
                 <div class="col-md-3 mb-3">
                     <label for="inputState">Cinsiyet</label>
-                    <select id="inputState" class="form-control">
+                    <select id="txtGender" class="form-control">
                         <option selected>Seçiniz..</option>
                         <option value="boy">Erkek</option>
                         <option value="girl">Kız</option>
@@ -52,18 +53,18 @@
             <div class="form-row">
                 <div class="col-md-3 mb-3">
                     <label for="validationTextarea">Adres</label>
-                    <textarea class="form-control" id="validationTextarea" placeholder="Lütfen Adresi Giriniz..." required></textarea>
+                    <textarea class="form-control" id="validationTextarea" ng-model="selectedStudent.Address" placeholder="Lütfen Adresi Giriniz..." required></textarea>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="col-md-3 mb-3">
                     <label for="validationDefault03">Şehir</label>
-                    <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
+                    <input type="text" class="form-control" id="validationDefault03" ng-model="selectedStudent.City" placeholder="City" required>
                 </div>
                 <div class="col-md-3 mb-3">
                     <label for="validationDefault04">İlçe</label>
-                    <input type="text" class="form-control" id="validationDefault04" placeholder="Town" required>
+                    <input type="text" class="form-control" id="validationDefault04" ng-model="selectedStudent.Town" placeholder="Town" required>
                 </div>
             </div>
             <div class="form-group">
@@ -74,7 +75,7 @@
                     </label>
                 </div>
             </div>
-            <button class="btn btn-primary" type="submit">Kaydı Tamamla</button>
+            <button class="btn btn-primary" ng-click="newCustomer()" type="submit">Kaydı Tamamla</button>
         </form>
 
     </div>

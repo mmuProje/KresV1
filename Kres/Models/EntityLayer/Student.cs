@@ -57,6 +57,15 @@ namespace Kres.Models.EntityLayer
         #endregion
 
         #region Method
+        public bool Add()
+        {
+            #region Null Control
+            PicturePath = PicturePath ?? String.Empty;
+            Code = Code ?? String.Empty;
+            #endregion
+            return DAL.AddStudent(Name, GuardianName, Address, Town, City, Mail, Tel1, Age, Gender, PicturePath);
+        }
+
         public static Student GetById(int pId)
         {
             Student item = new Student();
@@ -129,6 +138,19 @@ namespace Kres.Models.EntityLayer
 
     public partial class DataAccessLayer
     {
+        public bool AddStudent(string pName, string pGuardianName, string pAddress, string pTown, string pCity, string eMail, string pTel1, DateTime pAge, string pGender, string pPicturePath)
+        {
+            try
+            {
+                return DatabaseContext.ExecuteNonQuery(CommandType.StoredProcedure, "_Admin_Insert_Student", MethodBase.GetCurrentMethod().GetParameters(), new object[] {pName, pGuardianName, pAddress, pTown, pCity, eMail, pTel1, pAge, pGender, pPicturePath });
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
         public DataTable GetStudentById(int pId)
         {
             return DatabaseContext.ExecuteReader(CommandType.StoredProcedure, "_GetItem_StudentById", MethodBase.GetCurrentMethod().GetParameters(), new object[] { pId });

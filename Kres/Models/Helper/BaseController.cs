@@ -2,7 +2,9 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
@@ -92,6 +94,260 @@ namespace Kres.Models.Helper
         //public int CurrentEditId { get { return (CurrentLoginType == LoginType.Student ? CurrentStudent.Id ); } }
         #endregion
         #region Methods
+
+        protected bool UploadRemoteServer(byte[] file, string address)
+        {
+            bool result = false;
+
+            FtpWebRequest request = (FtpWebRequest)FtpWebRequest.Create(address);
+            request.Method = WebRequestMethods.Ftp.UploadFile;
+            request.Credentials = new NetworkCredential(GlobalSettings.FtpUserName, GlobalSettings.FtpPassword);
+            request.UsePassive = true;
+            request.UseBinary = true;
+            request.KeepAlive = false;
+
+
+            Stream reqStream = request.GetRequestStream();
+            reqStream.Write(file, 0, file.Length);
+            reqStream.Close();
+
+            result = true;
+
+
+            return result;
+
+        }
+        protected byte[] Parse(string base64Content)
+        {
+            if (string.IsNullOrEmpty(base64Content))
+            {
+                throw new ArgumentNullException(nameof(base64Content));
+            }
+
+            int indexOfSemiColon = base64Content.IndexOf(";", StringComparison.OrdinalIgnoreCase);
+
+            string dataLabel = base64Content.Substring(0, indexOfSemiColon);
+
+            string contentType = dataLabel.Split(':').Last();
+
+            var startIndex = base64Content.IndexOf("base64,", StringComparison.OrdinalIgnoreCase) + 7;
+
+            var fileContents = base64Content.Substring(startIndex);
+
+            byte[] bytes = Convert.FromBase64String(fileContents);
+
+            return bytes;
+        }
+        protected string GetFileType(string imageBase)
+        {
+            int indexOfSemiColon = imageBase.IndexOf(";", StringComparison.OrdinalIgnoreCase);
+            string dataLabel = imageBase.Substring(0, indexOfSemiColon);
+            string imgType = dataLabel.Split(':').Last().Split('/').Last();
+
+            #region allType
+            switch (imgType)
+            {
+                case "msword":
+                    imgType = "doc";
+                    break;
+                case "vnd.openxmlformats-officedocument.wordprocessingml.document":
+                    imgType = "docx";
+                    break;
+                case "vnd.openxmlformats-officedocument.wordprocessingml.template":
+                    imgType = "dotx";
+                    break;
+                case "vnd.ms-word.document.macroEnabled.12":
+                    imgType = "docm";
+                    break;
+                case "vnd.ms-word.template.macroEnabled.12":
+                    imgType = "dotm";
+                    break;
+                case "vnd.ms-excel":
+                    imgType = "xls";
+                    break;
+                case "vnd.openxmlformats-officedocument.spreadsheetml.sheet":
+                    imgType = "xlsx";
+                    break;
+                case "vnd.openxmlformats-officedocument.spreadsheetml.template":
+                    imgType = "xltx";
+                    break;
+                case "vnd.ms-excel.sheet.macroEnabled.12":
+                    imgType = "xlsm";
+                    break;
+                case "vnd.ms-excel.template.macroEnabled.12":
+                    imgType = "xltm";
+                    break;
+                case "vnd.ms-excel.addin.macroEnabled.12":
+                    imgType = "xlam";
+                    break;
+                case "vnd.ms-excel.sheet.binary.macroEnabled.12":
+                    imgType = "xlsb";
+                    break;
+                case "vnd.ms-powerpoint":
+                    imgType = "ppt";
+                    break;
+                case "vnd.openxmlformats-officedocument.presentationml.presentation":
+                    imgType = "pptx";
+                    break;
+                case "vnd.openxmlformats-officedocument.presentationml.template":
+                    imgType = "potx";
+                    break;
+                case "vnd.openxmlformats-officedocument.presentationml.slideshow":
+                    imgType = "ppsx";
+                    break;
+                case "vnd.ms-powerpoint.addin.macroEnabled.12":
+                    imgType = "ppam";
+                    break;
+                case "vnd.ms-powerpoint.presentation.macroEnabled.12":
+                    imgType = "pptm";
+                    break;
+                case "vnd.ms-powerpoint.template.macroEnabled.12":
+                    imgType = "potm";
+                    break;
+                case "vnd.ms-powerpoint.slideshow.macroEnabled.12":
+                    imgType = "ppsm";
+                    break;
+                case "vnd.ms-access":
+                    imgType = "mdb";
+                    break;
+
+                case "video/3gpp":
+                    imgType = "3gp";
+                    break;
+                case "":
+                    imgType = "";
+                    break;
+                case "video/x-ms-asf":
+                    imgType = "asf";
+                    break;
+                case "video/x-msvideo":
+                    imgType = "avi";
+                    break;
+                case "application/octet-stream":
+                    imgType = "bin";
+                    break;
+                case "image/bmp":
+                    imgType = "bmp";
+                    break;
+                case "text/css":
+                    imgType = "css";
+                    break;
+                case "text/csv":
+                    imgType = "csv";
+                    break;
+                case "image/vnd.dwg":
+                    imgType = "dwg";
+                    break;
+                case "image/vnd.dxf":
+                    imgType = "dxf";
+                    break;
+                case "x-msdownload":
+                    imgType = "exe";
+                    break;
+                case "video/x-flv":
+                    imgType = "flv";
+                    break;
+                case "image/gif":
+                    imgType = "gif";
+                    break;
+                case "text/html":
+                    imgType = "html";
+                    break;
+                case "	image/x-icon":
+                    imgType = "ico";
+                    break;
+                case "java-archive":
+                    imgType = "";
+                    break;
+                case "javascript":
+                    imgType = "js";
+                    break;
+                case "video/mp4":
+                    imgType = "mp4";
+                    break;
+                case "video/mpeg":
+                    imgType = "mpeg";
+                    break;
+                case "vnd.oasis.opendocument.database":
+                    imgType = "odb";
+                    break;
+                case "vnd.oasis.opendocument.chart":
+                    imgType = "odb";
+                    break;
+                case "vnd.oasis.opendocument.formula":
+                    imgType = "odf";
+                    break;
+
+                case "vnd.oasis.opendocument.spreadsheet":
+                    imgType = "ods";
+                    break;
+
+                case "vnd.oasis.opendocument.text":
+                    imgType = "odt";
+                    break;
+
+                case "x-font-otf":
+                    imgType = "otf";
+                    break;
+
+                case "vnd.oasis.opendocument.presentation-template":
+                    imgType = "otp";
+                    break;
+
+                case "vnd.oasis.opendocument.text-template":
+                    imgType = "ott";
+                    break;
+
+                case "vnd.palm":
+                    imgType = "pdb";
+                    break;
+                case "pdf":
+                    imgType = "pdf";
+                    break;
+                case "vnd.adobe.photoshop":
+                    imgType = "psd";
+                    break;
+                case "x-mspublisher":
+                    imgType = "pub";
+                    break;
+                case "x-rar-compressed":
+                    imgType = "rar";
+                    break;
+                case "svg+xml":
+                    imgType = "svg";
+                    break;
+                case "x-shockwave-flash":
+                    imgType = "swf";
+                    break;
+                case "tiff":
+                    imgType = "tiff";
+                    break;
+                case "plain":
+                    imgType = "txt";
+                    break;
+                case "x-ms-wma":
+                    imgType = "wma";
+                    break;
+                case "vnd.ms-works":
+                    imgType = "wps";
+                    break;
+                case "vnd.xara":
+                    imgType = "xar";
+                    break;
+                case "xml":
+                    imgType = "xml";
+                    break;
+                case "zip":
+                    imgType = "zip";
+                    break;
+                default:
+                    break;
+            }
+            #endregion
+
+            return imgType;
+        }
+
         private bool ControlApp(string Name, string loginType)
         {
 
@@ -323,6 +579,7 @@ namespace Kres.Models.Helper
             return str;
         }
     }
+
     public class MessageBox
     {
         public string Statu { get; set; }
